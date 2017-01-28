@@ -21,4 +21,4 @@ export var AppComponent = (function () {
     ], AppComponent);
     return AppComponent;
 }());
-//# sourceMappingURL=C:/Users/GalBenEvgi/WebstormProjects/Angular2-Full-Stack-master/Angular2-Full-Stack-master/src/app/app.component.js.map
+//# sourceMappingURL=C:/Users/GalBenEvgi/WebstormProjects/Angular2-Full-Stack-master/src/app/app.component.js.map

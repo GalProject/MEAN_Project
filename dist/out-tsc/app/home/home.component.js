@@ -108,4 +108,4 @@ export var HomeComponent = (function () {
     ], HomeComponent);
     return HomeComponent;
 }());
-//# sourceMappingURL=C:/Users/GalBenEvgi/WebstormProjects/Angular2-Full-Stack-master/Angular2-Full-Stack-master/src/app/home/home.component.js.map
+//# sourceMappingURL=C:/Users/GalBenEvgi/WebstormProjects/Angular2-Full-Stack-master/src/app/home/home.component.js.map

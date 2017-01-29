@@ -1,1 +1,0 @@
-//# sourceMappingURL=C:/Users/GalBenEvgi/WebstormProjects/Angular2-Full-Stack-master/Angular2-Full-Stack-master/src/app/shared/index.js.map

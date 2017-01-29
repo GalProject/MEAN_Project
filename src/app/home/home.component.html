@@ -50,12 +50,12 @@
       <tbody *ngIf="isEditing" style="width: auto">
         <tr>
           <td colspan="9" style="width: auto">
-            <form class="form-inline" #form="ngForm" (ngSubmit)="editAd(ad)" style="display:auto; width: auto">
+            <form class="form" #form="ngForm" (ngSubmit)="editAd(ad)" style="display:auto; width: auto">
               <div class="form-group">
-                  <input class="form-control" type="text" name="messageName" [(ngModel)]="ad.messageName" placeholder="messageName" required>
+                  <input class="form-control" type="text" name="messageName" [(ngModel)]="ad.messageName" placeholder="messageName" maxlength="15" required>
               </div>
               <div class="form-group">
-                <input class="form-control" type="number" name="messageNameID" [(ngModel)]="ad.messageID" placeholder="messageID" min="0" required>
+                <input class="form-control" type="number" name="messageNameID" [(ngModel)]="ad.messageID" placeholder="messageID" maxlength="4" min="0" required>
               </div>
               <div class="form-group">
                 <input class="form-control" type="text" name="messageText" [(ngModel)]="ad.messageText" placeholder="messageText" maxlength="20" required>
@@ -67,7 +67,7 @@
                 <input class="form-control" type="text" name="messageTemplatePath" [(ngModel)]="ad.messageTemplatePath" placeholder="messageTemplatePath" required>
               </div>
               <div class="form-group">
-                <input class="form-control" type="number" name="messageNumOfSeconds" [(ngModel)]="ad.messageNumOfSeconds" placeholder="messageNumOfSeconds"  min="0" required>
+                <input class="form-control" type="number" name="messageNumOfSeconds" [(ngModel)]="ad.messageNumOfSeconds" placeholder="messageNumOfSeconds"  min="0"  max="9999" required>
               </div>
               <div class="form-group">
                 <input class="form-control" type="datetime" name="startDateWithTime" [(ngModel)]="ad.startDateWithTime" placeholder="startDateWithTime" required>
@@ -93,10 +93,10 @@
   <div class="card-block">
     <form class="form" [formGroup]="addAdForm" (ngSubmit)="addAd()" style="text-align:center">
       <div class="form-group">
-          <input class="form-control" type="text" name="messageName" formControlName="messageName" placeholder="Name">
+          <input class="form-control" type="text" name="messageName" formControlName="messageName" maxlength="15" placeholder="Name">
       </div>
       <div class="form-group">
-        <input class="form-control" type="number" name="messageID" formControlName="messageID" placeholder="ID" min="0">
+        <input class="form-control" type="number" name="messageID" formControlName="messageID" placeholder="ID" min="0" max="999" maxlength="4">
       </div>
       <div class="form-text">
         <input class="form-control" type="text" name="messageText" formControlName="messageText" maxlength="20" placeholder="Text">
@@ -237,7 +237,7 @@
       </div>
 
       <div class="form-group">
-        <input class="form-control" type="number" name="messageNumOfSeconds" formControlName="messageNumOfSeconds" placeholder="Ad Seconds" min="0" >
+        <input class="form-control" type="number" name="messageNumOfSeconds" formControlName="messageNumOfSeconds" placeholder="Ad Seconds" min="0" max="9999">
       </div>
 
 

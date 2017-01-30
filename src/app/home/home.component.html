@@ -5,8 +5,6 @@
   </div>
 </div>
 
-
-
 <app-toast [message]="toast.message"></app-toast>
 
 <div class="card" *ngIf="!isLoading">
@@ -14,75 +12,101 @@
   <div class="card-block">
     <table class="table table-bordered table-striped" >
       <thead class="thead-default" style="width: auto">
-        <tr style="width: 15px">
-          <th>Name</th>
-          <th>Shared With Messages</th>
-          <th>Text</th>
-          <th>Pics</th>
-          <th>Path</th>
-          <th>Seconds</th>
-          <th>Start Date Time</th>
-          <th>End Date Time</th>
-          <th>Days To Show</th>
-        </tr>
+      <tr style="width: 15px">
+        <th>Name</th>
+        <th>Shared With Messages</th>
+        <th>Text</th>
+        <th>Pics</th>
+        <th>Path</th>
+        <th>Seconds</th>
+        <th>Start Date Time</th>
+        <th>End Date Time</th>
+        <th>Days To Show</th>
+      </tr>
       </thead>
       <tbody *ngIf="ads.length === 0">
-        <tr>
-          <td colspan="9">There are no ads in the DB. Add a new ad below.</td>
-        </tr>
+      <tr>
+        <td colspan="9">There are no ads in the DB. Add a new ad below.</td>
+      </tr>
       </tbody>
       <tbody *ngIf="!isEditing" style="width: auto">
-        <tr *ngFor="let ad of ads" style="width: auto">
-          <td>{{ad.messageName}}</td>
-          <td>{{ad.messageID}}</td>
-          <td>{{ad.messageText}}</td>
-          <td>{{ad.messagePics}}</td>
-          <td>{{ad.messageTemplatePath}}</td>
-          <td>{{ad.messageNumOfSeconds}}</td>
-          <td>{{ad.startDateWithTime}}</td>
-          <td>{{ad.endDateWithTime}}</td>
-          <td>{{ad.numOfdaysToShow}}</td>
-          <td>
-            <button class="btn btn-sm btn-info" (click)="enableEditing(ad)"><i class="fa fa-edit"></i> Edit </button> <button class="btn btn-sm btn-danger" (click)="deleteAd(ad)"><i class="fa fa-trash"></i> Delete</button>
-          </td>
-        </tr>
+      <tr *ngFor="let ad of ads" style="width: auto">
+        <td>{{ad.messageName}}</td>
+        <td>{{ad.messageID}}</td>
+        <td>{{ad.messageText}}</td>
+        <td>{{ad.messagePics}}</td>
+        <td>{{ad.messageTemplatePath}}</td>
+        <td>{{ad.messageNumOfSeconds}}</td>
+        <td>{{ad.startDateWithTime}}</td>
+        <td>{{ad.endDateWithTime}}</td>
+        <td>{{ad.numOfdaysToShow}}</td>
+        <td>
+          <button class="btn btn-sm btn-info" (click)="enableEditing(ad)"><i class="fa fa-edit"></i> Edit </button> <button class="btn btn-sm btn-danger" (click)="deleteAd(ad)"><i class="fa fa-trash"></i> Delete</button>
+        </td>
+      </tr>
       </tbody>
       <tbody *ngIf="isEditing" style="width: auto">
-        <tr>
-          <td colspan="9" style="width: auto">
-            <form class="form" #form="ngForm" (ngSubmit)="editAd(ad)" style="display:auto; width: auto">
-              <div class="form-group">
-                  <input class="form-control" type="text" name="messageName" [(ngModel)]="ad.messageName" placeholder="messageName" maxlength="15" required>
-              </div>
-              <div class="form-group">
-                <input class="form-control" type="number" name="messageNameID" [(ngModel)]="ad.messageID" placeholder="messageID" maxlength="4" min="0" required>
-              </div>
-              <div class="form-group">
-                <input class="form-control" type="text" name="messageText" [(ngModel)]="ad.messageText" placeholder="messageText" maxlength="20" required>
-              </div>
-              <div class="form-group">
-                <input class="form-control" type="text" name="messagePics" [(ngModel)]="ad.messagePics" placeholder="messagePics" required>
-              </div>
-              <div class="form-group">
-                <input class="form-control" type="text" name="messageTemplatePath" [(ngModel)]="ad.messageTemplatePath" placeholder="messageTemplatePath" required>
-              </div>
-              <div class="form-group">
-                <input class="form-control" type="number" name="messageNumOfSeconds" [(ngModel)]="ad.messageNumOfSeconds" placeholder="messageNumOfSeconds"  min="0"  max="9999" required>
-              </div>
-              <div class="form-group">
-                <input class="form-control" type="datetime" name="startDateWithTime" [(ngModel)]="ad.startDateWithTime" placeholder="startDateWithTime" required>
-              </div>
-              <div class="form-group">
-                <input class="form-control" type="datetime" name="endDateWithTime" [(ngModel)]="ad.endDateWithTime" placeholder="endDateWithTime" required>
-              </div>
-              <div class="form-group">
-                <input class="form-control" type="text" name="numOfdaysToShow" [(ngModel)]="ad.numOfdaysToShow" placeholder="numOfdaysToShow" required>
-              </div>
-              <button class="btn btn-sm btn-primary" type="submit" [disabled]="!form.form.valid"><i class="fa fa-floppy-o"></i> Save</button>
-            </form>
-            <button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancel</button>
-          </td>
-        </tr>
+      <tr>
+        <td colspan="9" style="width: auto">
+          <form class="form" #form="ngForm" (ngSubmit)="editAd(ad)" style="display:auto; width: auto">
+            <div class="form-group">
+              <input class="form-control" type="text" name="messageName" [(ngModel)]="ad.messageName" placeholder="messageName" maxlength="15" required>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="number" name="messageNameID" [(ngModel)]="ad.messageID" placeholder="messageID" maxlength="4" min="0" required>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="messageText" [(ngModel)]="ad.messageText" placeholder="messageText" maxlength="20" required>
+            </div>
+            Pics:
+            <div class="form-group form-control">
+              <select style="padding-left: 0px" multiple name="messagePics" [(ngModel)]="ad.messagePics" placeholder="messagePics" required>
+                <option value="pic1">pic 1</option>
+                <option value="pic2">pic 2</option>
+                <option value="pic3">pic 3</option>
+                <option value="pic4">pic 4</option>
+                <option value="pic5">pic 5</option>
+              </select>
+            </div>
+
+            Template:
+            <div class="form-group form-control">
+              <select style="padding-left: 0px" name="messageTemplatePath" [(ngModel)]="ad.messageTemplatePath" placeholder="messageTemplatePath" required>
+                <option value="A">Template A</option>
+                <option value="B">Template B</option>
+                <option value="C">Template C</option>
+              </select>
+            </div>
+
+
+            <div class="form-group">
+              <input class="form-control" type="number" name="messageNumOfSeconds" [(ngModel)]="ad.messageNumOfSeconds" placeholder="messageNumOfSeconds"  min="0"  max="9999" required>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="datetime" name="startDateWithTime" [(ngModel)]="ad.startDateWithTime" placeholder="startDateWithTime" required>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="datetime" name="endDateWithTime" [(ngModel)]="ad.endDateWithTime" placeholder="endDateWithTime" required>
+            </div>
+            Days:
+            <div class="form-group form-control">
+              <select  multiple name="numOfdaysToShow" [(ngModel)]="ad.numOfdaysToShow" placeholder="numOfdaysToShow" required>
+                <option value="0">Sunday</option>
+                <option value="1">Monday</option>
+                <option value="2">Tuesday</option>
+                <option value="3">Wednesday</option>
+                <option value="4">Thursday</option>
+                <option value="5">Friday</option>
+                <option value="6">Saturday</option>
+              </select>
+            </div>
+
+
+            <button class="btn btn-sm btn-primary" type="submit" [disabled]="!form.form.valid"><i class="fa fa-floppy-o"></i> Save</button>
+          </form>
+          <button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancel</button>
+        </td>
+      </tr>
       </tbody>
     </table>
   </div>
@@ -92,260 +116,75 @@
   <h4 class="card-header">Add new ad</h4>
   <div class="card-block">
     <form class="form" [formGroup]="addAdForm" (ngSubmit)="addAd()" style="text-align:center">
+
+      <!--Add message Name-->
       <div class="form-group">
-          <input class="form-control" type="text" name="messageName" formControlName="messageName" maxlength="15" placeholder="Name">
+        <input class="form-control" type="text" name="messageName" formControlName="messageName" maxlength="15" placeholder="Name">
       </div>
+
+      <!--Add MessageID-->
       <div class="form-group">
         <input class="form-control" type="number" name="messageID" formControlName="messageID" placeholder="ID" min="0" max="999" maxlength="4">
       </div>
+
+      <!--Add message Text-->
       <div class="form-text">
         <input class="form-control" type="text" name="messageText" formControlName="messageText" maxlength="20" placeholder="Text">
       </div>
-      <!--<div class="form-group">-->
-        <!--<input class="form-control" type="text" name="messagePics" formControlName="messagePics" placeholder="Pics">-->
-        <!--<form class="form-group" >-->
-          <!--<input type="checkbox" value="pic1"> <img src="http://i65.tinypic.com/2cdxqg8.png">-->
-          <!--<input type="checkbox" value="pic2" checked><img src="http://i66.tinypic.com/2irssoo.png">-->
-          <!--<input type="checkbox" value="pic3" checked><img src="http://i66.tinypic.com/2co6l2h.png">-->
-          <!--<input type="checkbox" value="pic5" checked><img src="http://i65.tinypic.com/20icrgh.png">-->
-          <!--<input type="checkbox" value="pic5" checked><img src="http://i67.tinypic.com/2hia79g.png">-->
-          <!--<input type="checkbox" value="pic5" checked><img src="http://i67.tinypic.com/16lir8z.png">-->
-        <!--</form>-->
-      <br>
 
-      <!--<div ng-controller="SelectOptGroupController" class="md-padding" ng-cloak>-->
-        <!--<div>-->
-          <!--<div layout="row">-->
-            <!--<md-input-container>-->
-              <!--<label>Topping</label>-->
-              <!--<md-select ng-model="selectedToppings" multiple>-->
-                <!--<md-optgroup label="Meats">-->
-                  <!--<md-option ng-value="topping.name" ng-repeat="topping in toppings | filter: {category: 'meat' }">{{topping.name}}</md-option>-->
-                <!--</md-optgroup>-->
-                <!--<md-optgroup label="Veggies">-->
-                  <!--<md-option ng-value="topping.name" ng-repeat="topping in toppings | filter: {category: 'veg' }">{{topping.name}}</md-option>-->
-                <!--</md-optgroup>-->
-              <!--</md-select>-->
-            <!--</md-input-container>-->
-          <!--</div>-->
-          <!--<p ng-if="selectedToppings">You ordered a {{size.toLowerCase()}} pizza with-->
-            <!--{{printSelectedToppings()}}.</p>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<div class="form-group">-->
-        <!--<div formArrayName="messagePics" class="md-padding" ng-cloak>-->
-          <!--<div>-->
-            <!--<h1 class="md-title">Pick a vegetable below</h1>-->
-            <!--<div layout="row">-->
-              <!--<md-input-container>-->
-                <!--<label>Vegetables</label>-->
-                <!--<md-select-->
-                           <!--md-on-close="clearSearchTerm()"-->
-                           <!--multiple>-->
-                  <!--<md-select-header class="demo-select-header">-->
-                    <!--<input ng-model="searchTerm"-->
-                           <!--type="search"-->
-                           <!--placeholder="Search for a vegetable.."-->
-                           <!--class="demo-header-searchbox md-text">-->
-                  <!--</md-select-header>-->
-                  <!--<md-optgroup label="messagePics">-->
-                    <!--<md-option ng-value="pic" ng-repeat="pic in messagePics |-->
-              <!--filter:searchTerm">{{daysAvailable}}</md-option>-->
-                  <!--</md-optgroup>-->
-                <!--</md-select>-->
-              <!--</md-input-container>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-          <!--</div>-->
-
-      <!--
-      Copyright 2016 Google Inc. All Rights Reserved.
-      Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
-      -->
-      <!--<div class="form-group" >-->
-      <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
-      <!--<body formControlName="messageTemplatePath">-->
-      <!--<p>My cars:</p>-->
-      <!--<input type="checkbox" value="1" ng-checked="MessagesPics">Volvo<br>-->
-      <!--<input type="checkbox" value="2" ng-checked="MessagesPics">Ford<br>-->
-      <!--<input type="checkbox" value="2" ng-checked="MessagesPics">Mercedes-->
-      <!--<p>Click "Check all" to check all three cars.</p>-->
-      <!--</body>-->
-      <!--</div>-->
-      <!--<div class="input-controls" >-->
-        <!--<h4>Select your programming skills</h4>-->
-        <!--<div>-->
-          <!--<label>-->
-            <!--<input formControlName="messagePics" value="1" #angularcb type="checkbox" (change)="messagePics" />-->
-            <!--Angular-->
-          <!--</label>-->
-        <!--</div>-->
-        <!--<div>-->
-          <!--<label>-->
-            <!--<input formControlName="messagePics" value="2" #javascriptcb type="checkbox" (change)="messagePics" />-->
-            <!--JavaScript-->
-          <!--</label>-->
-        <!--</div>-->
-      <!--</div>-->
+      <!--Add Pics-->
+      Pics:
       <div class="form-group">
-        Pics:
-        <select style="padding-left: 0px" multiple name="messagePics" formControlName="messagePics">
-          <option value="pic1">
-            pic 1
-          </option>
-          <option value="pic2">
-            pic 2
-          </option>
-          <option value="pic3">
-            pic 3
-          </option>
-          <option value="pic4">
-            pic 4
-          </option>
-          <option value="pic5">
-            pic 5
-          </option>
+        <select style="padding-left: 0px" size="5" multiple name="messagePics" formControlName="messagePics">
+          <option value="pic1">pic 1</option>
+          <option value="pic2">pic 2</option>
+          <option value="pic3">pic 3</option>
+          <option value="pic4">pic 4</option>
+          <option value="pic5">pic 5</option>
         </select>
       </div>
-      <!--Your Ad's picture:-->
-      <!--<div class="form-group">-->
-      <!--<ul style="padding-left: 0px">-->
-        <!--<li><input type="checkbox" id="cb3" value="pic3" name="messagePics" formControlName="messagePics"/>-->
-          <!--<label for="cb3"value="pic3"><img src="http://i66.tinypic.com/2co6l2h.png" /></label>-->
-        <!--</li>-->
-        <!--<li><input type="checkbox" id="cb4" value="pic4" name="messagePics" formControlName="messagePics" />-->
-        <!--<label for="cb4" value="pic4"><img src="http://i65.tinypic.com/20icrgh.png" /></label>-->
-      <!--</li>-->
-        <!--<li><input type="checkbox" id="cb5" value="pic5" name="messagePics" formControlName="messagePics" />-->
-          <!--<label for="cb5" value="pic5"><img src="http://i67.tinypic.com/16lir8z.png" /></label>-->
-        <!--</li>-->
-        <!--<li><input type="checkbox" id="cb6" value="pic6" name="messagePics" formControlName="messagePics" />-->
-          <!--<label for="cb6" value="pic6"><img src="http://i64.tinypic.com/68rl3c.png" /></label>-->
-        <!--</li>-->
-      <!--</ul>-->
-      <!--</div>-->
 
-
-      <div class="form-group" >
-        <label for="messageTemplatePath" ></label>
+      <!--Add Template Path-->
+      <div class="form-group">
         <select class="form-control" id="messageTemplatePath" name="messageTemplatePath" formControlName="messageTemplatePath" >
-          <option value="./templateA.html">Template One</option>
-          <option value="./templateB.html">Template Two</option>
-          <option value="./templateC.html">Template Three</option>
+          <option value="A">Template One</option>
+          <option value="B">Template Two</option>
+          <option value="C">Template Three</option>
         </select>
       </div>
 
+
+      <!--Add number of Seconds-->
       <div class="form-group">
         <input class="form-control" type="number" name="messageNumOfSeconds" formControlName="messageNumOfSeconds" placeholder="Ad Seconds" min="0" max="9999">
       </div>
 
-
+      <!--Add Start Date & Time-->
       Start Date and Time:
-      <!--<div class="form-group">-->
-          <!--<input class="form-control" type="date" value="2017-01-21" id="startDate">-->
-      <!--</div>-->
       <div class="form-group">
-          <input class="form-control" type="datetime-local" value="2016-08-19 13:45:00" id="startDateWithTime" name="startDateWithTime" formControlName="startDateWithTime" >
+        <input class="form-control" type="datetime-local" value="2016-08-19 13:45:00" id="startDateWithTime" name="startDateWithTime" formControlName="startDateWithTime" >
       </div>
+
+      <!--Add End Date & Time-->
       End Date and Time:
-      <!--<div class="form-group">-->
-        <!--<input class="form-control" type="date" value="2018-01-21" id="endDate">-->
-      <!--</div>-->
       <div class="form-group">
         <input class="form-control" type="datetime-local" value="2017-08-19 13:45:00" id="endDateWithTime" name="endDateWithTime" formControlName="endDateWithTime">
       </div>
-      Days:
 
+      <!--Add Days-->
+      Days:
       <div class="form-group">
-      Pics:
-      <select  multiple name="numOfdaysToShow" formControlName="numOfdaysToShow">
-        <option value="0">
-          Sunday
-        </option>
-        <option value="1">
-          Monday
-        </option>
-        <option value="2">
-          Tuesday
-        </option>
-        <option value="3">
-          Wednesday
-        </option>
-        <option value="4">
-          Thursday
-        </option>
-        <option value="5">
-          Friday
-        </option>
-        <option value="6">
-          Saturday
-        </option>
-      </select>
+        <select  multiple name="numOfdaysToShow" size="7" formControlName="numOfdaysToShow">
+          <option value="0">Sunday</option>
+          <option value="1">Monday</option>
+          <option value="2">Tuesday</option>
+          <option value="3">Wednesday</option>
+          <option value="4">Thursday</option>
+          <option value="5">Friday</option>
+          <option value="6">Saturday</option>
+        </select>
       </div>
 
-
-      <!--<ul style="padding-left: 0px">-->
-      <!--<li><div class="form-check form-check-inline">-->
-        <!--<label class="form-check-label">-->
-          <!--<input class="form-check-input" type="checkbox" id="numOfdaysToShow" name="numOfdaysToShow" formControlName="numOfdaysToShow"value="0"> Sunday-->
-        <!--</label>-->
-      <!--</div>-->
-      <!--</li>-->
-      <!--<li><div class="form-check form-check-inline">-->
-      <!--<label class="form-check-label">-->
-        <!--<input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="numOfdaysToShow" formControlName="numOfdaysToShow" value="1"> Monday-->
-      <!--</label>-->
-    <!--</div>-->
-      <!--</li>-->
-      <!--<li><div class="form-check form-check-inline">-->
-        <!--<label class="form-check-label">-->
-          <!--<input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="numOfdaysToShow" formControlName="numOfdaysToShow" value="2"> Tuesday-->
-        <!--</label>-->
-      <!--</div>-->
-      <!--</li>-->
-      <!--<li><div class="form-check form-check-inline">-->
-        <!--<label class="form-check-label">-->
-          <!--<input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="numOfdaysToShow" formControlName="numOfdaysToShow" value="3"> Wednesday-->
-        <!--</label>-->
-      <!--</div>-->
-      <!--</li>-->
-      <!--<li><div class="form-check form-check-inline">-->
-        <!--<label class="form-check-label">-->
-          <!--<input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="numOfdaysToShow" formControlName="numOfdaysToShow" value="4"> Thursday-->
-        <!--</label>-->
-      <!--</div>-->
-      <!--</li>-->
-      <!--<li><div class="form-check form-check-inline">-->
-        <!--<label class="form-check-label">-->
-          <!--<input class="form-check-input" type="checkbox" id="inlineCheckbox5" name="numOfdaysToShow" formControlName="numOfdaysToShow" value="5"> Friday-->
-        <!--</label>-->
-      <!--</div>-->
-      <!--</li>-->
-      <!--<li><div class="form-check form-check-inline">-->
-        <!--<label class="form-check-label">-->
-          <!--<input class="form-check-input" type="checkbox" id="inlineCheckbox6" name="numOfdaysToShow" formControlName="numOfdaysToShow" value="6"> Saturday-->
-        <!--</label>-->
-      <!--</div>-->
-      <!--</li>-->
-      <!--</ul>-->
-      <!--Start Time:-->
-      <!--<div class="form-group">-->
-        <!--<input class="form-control" type="time" value="13:45:00" id="startTime">-->
-      <!--</div>-->
-      <!--End Time:-->
-      <!--<div class="form-group">-->
-        <!--<input class="form-control" type="time" value="13:45:00" id="endTime">-->
-      <!--</div>-->
-
-
-      <!--<form action="demo_form.asp" class="form-control" list="messageTemplatePath" name="messageTemplatePath" method="get" formControlName="messageTemplatePath">-->
-        <!--<select required>-->
-          <!--<option value="./templateA.html">Template One</option>-->
-          <!--<option value="./templateB.html">Template Two</option>-->
-          <!--<option value="./templateC.html">Template Three</option>-->
-        <!--</select>-->
-      <!--</form>-->
       <button class="btn btn-primary" type="submit" [disabled]="!addAdForm.valid"><i class="fa fa-floppy-o"></i> Add</button>
     </form>
   </div>

@@ -3,6 +3,7 @@ import {FormGroup, FormControl, Validators, FormBuilder} from "@angular/forms";
 import {Http} from "@angular/http";
 import {DataService} from "../services/data.service";
 import {ToastComponent} from "../shared/toast/toast.component";
+import {color} from "d3-color";
 
 @Component({
   selector: 'app-run-it',
@@ -29,6 +30,27 @@ export class RunItComponent implements OnInit {
   numOfdaysToShow = new FormControl('', Validators.required);
 
 
+  setBorderColor(ad){
+    if (ad.messageTemplatePath.toString() == "A") {
+      return {
+        borderColor: 'green'
+      };
+    }
+    if (ad.messageTemplatePath.toString() == "B"){
+      return{
+        borderColor: 'red'
+      };
+    }
+    if (ad.messageTemplatePath.toString() == "C"){
+      return{
+        borderColor: 'gold'
+      };
+    }
+  }
+
+
+
+
   constructor(private http: Http,
               private dataService: DataService,
               public toast: ToastComponent,
@@ -53,6 +75,8 @@ export class RunItComponent implements OnInit {
     });
   }
 
+
+
   getAds() {
     this.dataService.getAds().subscribe(
       data => this.ads = data,
@@ -60,5 +84,7 @@ export class RunItComponent implements OnInit {
       () => this.isLoading = false
     );
   }
+
+
 
 }

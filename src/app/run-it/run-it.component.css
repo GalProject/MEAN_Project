@@ -4,7 +4,7 @@ body { font-size: 18px; font-family: 'Roboto', sans-serif; font-weight: 400; }
 .item-wrap,
 .general-desc-wrap { width: 100%; text-align:center; margin : 25px 0; }
 .general-desc-wrap { padding : 0 85px; }
-.item-wrap .item { position: relative; border: 1px solid #ccc; width: 342px; min-height: 397px; border-radius: 5px; padding: 25px; display:inline-block; margin-right: 10px; margin-bottom : 10px; vertical-align: top; }
+.item-wrap .item { position: relative; border: 2px solid #ccc; width: 342px; min-height: 397px; border-radius: 5px; padding: 25px; display:inline-block; margin-right: 10px; margin-bottom : 10px; vertical-align: top; }
 .item-wrap .item h2 { margin: 0px 0 15px 0; padding: 0px; font-size: 28px; font-weight: 700;  }
 .item-wrap .item h3 { font-size: 24px; font-weight: 700; color: #C30; }
 .item-wrap .item p { font-weight: 300; margin-top: 150px; }

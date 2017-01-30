@@ -29,7 +29,6 @@ export class HomeComponent implements OnInit {
   messagePics = new FormControl('', Validators.required);
   messageTemplatePath = new FormControl('', Validators.required);
   messageNumOfSeconds = new FormControl('', Validators.required);
-  // messageTimeSet = new FormControl('', Validators.required);
   startDateWithTime = new FormControl('', Validators.required);
   endDateWithTime = new FormControl('', Validators.required);
   numOfdaysToShow = new FormControl('', Validators.required);
@@ -52,17 +51,12 @@ export class HomeComponent implements OnInit {
       messagePics: this.messagePics,
       messageTemplatePath: this.messageTemplatePath,
       messageNumOfSeconds: this.messageNumOfSeconds,
-      // messageTimeSet: this.formBuilder.group({
-      // startDateTime: "",
-      // endDateTime: "",
-      // numOfdaysToShow: [""]
-      //   }
-      // )
       startDateWithTime: this.startDateWithTime,
       endDateWithTime:this.endDateWithTime,
       numOfdaysToShow:this.numOfdaysToShow
     });
   }
+
 
   getAds() {
     this.dataService.getAds().subscribe(

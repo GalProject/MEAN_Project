@@ -1,8 +1,25 @@
-<div class="card">
-  <h4 class="card-header">Graph Statics</h4>
-  <svg class="graph" width="960" height="500"></svg>
-  <svg class="pie" width="960" height="500"></svg>
+<div class="card" *ngIf="isLoading">
+  <h4 class="card-header">Loading...</h4>
+  <div class="card-block text-xs-center">
+    <i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
+  </div>
+</div>
 
-  <button onclick="myFunction()">Javascript</button>
+
+<h4 class="card-header">Graph Statics</h4>
+<div class="card" *ngIf="!isLoading">
+  <h4 class="card-header">Current Ads ({{ads.length}})</h4>
+          <tbody *ngIf="ads.length === 0">
+          <p>There are no ads in the DB<p>
+          </tbody>
+
+          <svg  *ngIf="!isLoading" [ngStyle]="funcA()" class="graph" width="960" height="500"></svg>
+          <svg  *ngIf="!isLoading" class="pie" width="960" height="500"></svg>
+          <button onclick="myFunction()">Javascript</button>
+
 
 </div>
+
+
+
+

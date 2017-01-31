@@ -16,9 +16,6 @@ export class HomeComponent implements OnInit {
   ads = [];
   isLoading = true;
 
-  daysAvailable = ['Sunday', 'Monday',
-    'Tuesday', 'Wednesday','Thursday','Friday','Saturday'];
-
   ad = {};
   isEditing = false;
 

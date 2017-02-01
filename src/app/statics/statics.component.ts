@@ -65,7 +65,7 @@ export class StaticsComponent implements OnInit {
   public dataToGraphA = [];
   public dataToGraphB = [];
 
-  funcA(){
+  setDataToGraphs(){
     console.log(this.ads)
     var i=0;
 

@@ -13,9 +13,11 @@
           <p>There are no ads in the DB<p>
           </tbody>
 
-          <svg *ngIf="!isLoading" [ngStyle]="setDataToGraphs()" class="graph" width="960" height="500"></svg>
-          <svg  *ngIf="!isLoading" class="pie" width="960" height="500"></svg>
-          <button onclick="myFunction()">Javascript</button>
+          <div *ngIf="ads.length != 0">
+              <svg [ngStyle]="setDataToGraphs()" class="graph" width="960" height="500"></svg>
+              <br>
+              <svg class="pie" width="960" height="500"></svg>
+          </div>
 
 
 </div>

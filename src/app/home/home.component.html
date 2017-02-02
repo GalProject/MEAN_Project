@@ -51,15 +51,15 @@
         </td>
       </tr>
       </tbody>
-      <tbody *ngIf="isEditing" style="width: auto">
+      <tbody *ngIf="isEditing" style="width: auto;">
       <tr>
         <td colspan="9" style="width: auto">
-          <form class="form" #form="ngForm" (ngSubmit)="editAd(ad)" style="display:auto; width: auto">
+          <form class="form" #form="ngForm" (ngSubmit)="editAd(ad)" style="display:block; width: auto">
             <div class="form-group">
               <input class="form-control" type="text" name="messageName" [(ngModel)]="ad.messageName" placeholder="messageName" maxlength="15" required>
             </div>
             <div class="form-group">
-              <input class="form-control" type="number" name="messageNameID" [(ngModel)]="ad.messageID" placeholder="messageID" maxlength="4" min="0" required>
+              <input class="form-control" type="number" name="messageNameID" [(ngModel)]="ad.messageID" placeholder="messageID" maxlength="5" min="0" required>
             </div>
             <div class="form-group">
               <input class="form-control" type="text" name="messageText" [(ngModel)]="ad.messageText" placeholder="messageText" maxlength="20" required>

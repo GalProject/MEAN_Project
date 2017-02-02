@@ -12,13 +12,16 @@ import { DataService } from './services/data.service';
 import { ToastComponent } from './shared/toast/toast.component';
 import { RunItComponent } from './run-it/run-it.component';
 import { StaticsComponent } from './statics/statics.component';
+import { MapComponent } from './map/map.component';
+import {AgmCoreModule} from "angular2-google-maps/core";
 
 const routing = RouterModule.forRoot([
     { path: '',      component: HomeComponent },
     { path: 'about', component: AboutComponent },
     //Added
     { path: 'runit', component: RunItComponent },
-    { path: 'statics', component: StaticsComponent }
+    { path: 'statics', component: StaticsComponent },
+    { path: 'map', component: MapComponent }
 
 
 ]);
@@ -30,14 +33,18 @@ const routing = RouterModule.forRoot([
     AboutComponent,
     ToastComponent,
     RunItComponent,
-    StaticsComponent
+    StaticsComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    routing
+    routing,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCsTvvvYppcaHK8ms3oZzqv9M3eP8sAl-s'
+    })
   ],
   providers: [
     DataService,

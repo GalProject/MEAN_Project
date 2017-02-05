@@ -18,7 +18,6 @@ import {AgmCoreModule} from "angular2-google-maps/core";
 const routing = RouterModule.forRoot([
     { path: '',      component: HomeComponent },
     { path: 'about', component: AboutComponent },
-    //Added
     { path: 'runit', component: RunItComponent },
     { path: 'statics', component: StaticsComponent },
     { path: 'map', component: MapComponent }

@@ -15,7 +15,7 @@
   </div>
 </div>
 <div class="card" *ngIf="!isLoading">
-  <h4 class="card-header">Current Ads On Map({{ads.length}})</h4>
+  <h4 class="card-header">Current Ads On Map ({{ads.length}})</h4>
   <div class="card-block">
     <table class="table table-bordered table-striped" >
       <thead class="thead-default" style="width: auto">
@@ -31,7 +31,6 @@
         <td colspan="4">There are no ads in the DB. Add a new ad below.</td>
       </tr>
       </tbody>
-      <tbody *ngIf="!isEditing" style="width: auto">
       <tr *ngFor="let ad of ads" style="width: auto">
         <td>{{ad.messageName}}</td>
         <td>{{ad.messageLongitudeLocation}},{{ad.messageLatitudeLocation}}</td>

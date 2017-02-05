@@ -29,6 +29,8 @@ export class HomeComponent implements OnInit {
   startDateWithTime = new FormControl('', Validators.required);
   endDateWithTime = new FormControl('', Validators.required);
   numOfdaysToShow = new FormControl('', Validators.required);
+  messageLatitudeLocation = new FormControl('', Validators.required);
+  messageLongitudeLocation = new FormControl('', Validators.required);
 
 
   constructor(private http: Http,
@@ -50,7 +52,10 @@ export class HomeComponent implements OnInit {
       messageNumOfSeconds: this.messageNumOfSeconds,
       startDateWithTime: this.startDateWithTime,
       endDateWithTime:this.endDateWithTime,
-      numOfdaysToShow:this.numOfdaysToShow
+      numOfdaysToShow:this.numOfdaysToShow,
+      messageLatitudeLocation: this.messageLatitudeLocation,
+      messageLongitudeLocation:this.messageLongitudeLocation
+
     });
   }
 

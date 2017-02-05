@@ -9,7 +9,11 @@ var adSchema = mongoose.Schema({
     messageNumOfSeconds: Number,
     startDateWithTime: String,
     endDateWithTime: String,
-    numOfdaysToShow: String
+    numOfdaysToShow: String,
+    messageLatitudeLocation: Number,
+    messageLongitudeLocation:Number
+
+
 
 });
 

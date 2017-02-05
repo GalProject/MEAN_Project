@@ -28,11 +28,12 @@
         <th>Start Date Time</th>
         <th>End Date Time</th>
         <th>Days To Show</th>
+        <th>Location</th>
       </tr>
       </thead>
       <tbody *ngIf="ads.length === 0">
       <tr>
-        <td colspan="9">There are no ads in the DB. Add a new ad below.</td>
+        <td colspan="10">There are no ads in the DB. Add a new ad below.</td>
       </tr>
       </tbody>
       <tbody *ngIf="!isEditing" style="width: auto">
@@ -46,6 +47,7 @@
         <td>{{ad.startDateWithTime}}</td>
         <td>{{ad.endDateWithTime}}</td>
         <td>{{ad.numOfdaysToShow}}</td>
+        <td>{{ad.messageLongitudeLocation}},{{ad.messageLatitudeLocation}}</td>
         <td>
           <button class="btn btn-sm btn-info" (click)="enableEditing(ad)"><i class="fa fa-edit"></i> Edit </button> <button class="btn btn-sm btn-danger" (click)="deleteAd(ad)"><i class="fa fa-trash"></i> Delete</button>
         </td>
@@ -53,7 +55,7 @@
       </tbody>
       <tbody *ngIf="isEditing" style="width: auto;">
       <tr>
-        <td colspan="9" style="width: auto">
+        <td colspan="10" style="width: auto">
           <form class="form" #form="ngForm" (ngSubmit)="editAd(ad)" style="display:block; width: auto">
             <div class="form-group">
               <input class="form-control" type="text" name="messageName" [(ngModel)]="ad.messageName" placeholder="messageName" maxlength="15" required>
@@ -86,7 +88,7 @@
 
 
             <div class="form-group">
-              <input class="form-control" type="number" name="messageNumOfSeconds" [(ngModel)]="ad.messageNumOfSeconds" placeholder="messageNumOfSeconds"  min="0"  max="9999" required>
+              <input class="form-control" type="number" name="messageNumOfSeconds" [(ngModel)]="ad.messageNumOfSeconds" placeholder="messageNumOfSeconds"  min="0"  max="999999" required>
             </div>
             <div class="form-group">
               <input class="form-control" type="datetime" name="startDateWithTime" [(ngModel)]="ad.startDateWithTime" placeholder="startDateWithTime" required>
@@ -105,6 +107,12 @@
                 <option value="5">Friday</option>
                 <option value="6">Saturday</option>
               </select>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="number" step="any" name="messageLatitudeLocation" [(ngModel)]="ad.messageLatitudeLocation" placeholder="messageLatitudeLocation" required>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="number" step="any" name="messageLongitudeLocation" [(ngModel)]="ad.messageLongitudeLocation" placeholder="messageLongitudeLocation" required>
             </div>
 
 
@@ -189,6 +197,16 @@
           <option value="5">Friday</option>
           <option value="6">Saturday</option>
         </select>
+      </div>
+
+      <!--Add message Longitude-->
+      <div class="form-text">
+        <input class="form-control" type="number" step="any" name="messageLongitudeLocation" formControlName="messageLongitudeLocation" placeholder="message Longitude">
+      </div>
+
+      <!--Add message LatitudeLocation-->
+      <div class="form-text">
+        <input class="form-control" type="number" step="any" name="messageLatitudeLocation" formControlName="messageLatitudeLocation" placeholder="message Latitude">
       </div>
 
       <button class="btn btn-primary" type="submit" [disabled]="!addAdForm.valid"><i class="fa fa-floppy-o"></i> Add</button>

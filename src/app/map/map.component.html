@@ -2,9 +2,8 @@
 
 <!-- this creates a google map on the page with the given latitude/longitude from -->
 <!-- the component as the initial center of the map: -->
-
-<sebm-google-map *ngIf="!isMapLoading"
-  [latitude]="lat"
+<div id="map">
+  <!--[latitude]="lat"
   [longitude]="lng"
   [zoom]="zoom"
   [disableDefaultUI]="false"
@@ -24,8 +23,8 @@
 
   </sebm-google-map-marker>
 
-
-</sebm-google-map>
+-->
+</div>
 
 <div class="card" *ngIf="isLoading">
   <h4 class="card-header">Loading...</h4>

@@ -17,19 +17,10 @@ import {AgmCoreModule} from "angular2-google-maps/core";
 export class MapComponent implements OnInit{
 
 
-  // google maps zoom level
-  zoom: number = 8;
-
-  // initial center position for the map
-  lat: number = 31;
-  lng: number = 34;
-
-
   clickedMarker(label: string, index: number) {
     console.log(`clicked the marker: ${label || index}`)
   }
 
-  markers: marker[] = [];
 
 
   //Added New
@@ -57,12 +48,13 @@ export class MapComponent implements OnInit{
               public toast: ToastComponent,
               private formBuilder: FormBuilder) {
 
+
   }
 
   ngOnInit() {
 
-
     this.getAds();
+
 
     this.addAdForm = this.formBuilder.group({
       messageName: this.messageName,
@@ -78,43 +70,50 @@ export class MapComponent implements OnInit{
 
     });
 
+  }
+
+  setMap(ads) {
+    var geocoder;
+    var map;
+
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var myOptions = {
+      zoom: 8,
+      center: latlng,
+      mapTypeControl: true,
+      mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+      navigationControl: true,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(document.getElementById("map"), myOptions);
+
+    if (geocoder) {
+      for (let ad of ads) {
+        geocoder.geocode({'address': ad.address}, function (results, status) {
+          map.setCenter(results[0].geometry.location);
+
+          var mark = new google.maps.Marker({
+            position: results[0].geometry.location,
+            map: map,
+            title: ad.messageName,
+            label: ad.messageName
+          });
+
+
+        });
+      }
+    }
 
   }
 
-
-
-  setLoading():void{
-    this.isLoading=false;
-    this.isMapLoading=false;
-  }
-
-  setMarkers(marker, callback: () => void){
-
-for(let ad of this.ads) {
-
-  var geocoder = new google.maps.Geocoder();
-  geocoder.geocode({'address': ad.address}, function (results, status) {
-
-
-    marker.push({
-      lat: results[0].geometry.location.lat(),
-      lng: results[0].geometry.location.lng(),
-      label: ad.messageName,
-      draggable: false
-    });
-
-    callback();
-
-  });
-}
-
-  }
 
   getAds() {
     this.dataService.getAds().subscribe(
       data => this.ads = data,
       error => console.log(error),
-      () => {this.setMarkers(this.markers,()=>this.setLoading());
+      () => {this.isLoading=false;
+      this.setMap(this.ads);
 
       }
     );
@@ -136,12 +135,6 @@ for(let ad of this.ads) {
 
 }
 
-interface marker {
-  lat: number;
-  lng: number;
-  label?: string;
-  draggable: boolean;
-}
 
 
 @NgModule({

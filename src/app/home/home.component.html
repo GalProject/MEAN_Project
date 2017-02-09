@@ -47,7 +47,7 @@
         <td>{{ad.startDateWithTime}}</td>
         <td>{{ad.endDateWithTime}}</td>
         <td>{{ad.numOfdaysToShow}}</td>
-        <td>{{ad.messageLongitudeLocation}},{{ad.messageLatitudeLocation}}</td>
+        <td>{{ad.address}}</td>
         <td>
           <button class="btn btn-sm btn-info" (click)="enableEditing(ad)"><i class="fa fa-edit"></i> Edit </button> <button class="btn btn-sm btn-danger" (click)="deleteAd(ad)"><i class="fa fa-trash"></i> Delete</button>
         </td>
@@ -108,11 +108,9 @@
                 <option value="6">Saturday</option>
               </select>
             </div>
+
             <div class="form-group">
-              <input class="form-control" type="number" step="any" name="messageLatitudeLocation" [(ngModel)]="ad.messageLatitudeLocation" placeholder="messageLatitudeLocation" required>
-            </div>
-            <div class="form-group">
-              <input class="form-control" type="number" step="any" name="messageLongitudeLocation" [(ngModel)]="ad.messageLongitudeLocation" placeholder="messageLongitudeLocation" required>
+              <input class="form-control" type="text" step="any" name="address" [(ngModel)]="ad.address" placeholder="address" required>
             </div>
 
 
@@ -200,17 +198,12 @@
         </select>
       </div>
 
-      <!--Add message Longitude-->
-      Google Map Longitude:
+      <!--Address-->
+      Address:
       <div class="form-text">
-        <input class="form-control" type="number" step="any" name="messageLongitudeLocation" formControlName="messageLongitudeLocation" placeholder="message Longitude">
+        <input class="form-control" type="text" step="any" name="address" formControlName="address" placeholder="address">
       </div>
 
-      <!--Add message LatitudeLocation-->
-      Google Map Latitude:
-      <div class="form-text">
-        <input class="form-control" type="number" step="any" name="messageLatitudeLocation" formControlName="messageLatitudeLocation" placeholder="message Latitude">
-      </div>
 
       <br>
 

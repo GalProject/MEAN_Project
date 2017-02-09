@@ -15,6 +15,8 @@ import { StaticsComponent } from './statics/statics.component';
 import { MapComponent } from './map/map.component';
 import {AgmCoreModule} from "angular2-google-maps/core";
 
+
+
 const routing = RouterModule.forRoot([
     { path: '',      component: HomeComponent },
     { path: 'about', component: AboutComponent },

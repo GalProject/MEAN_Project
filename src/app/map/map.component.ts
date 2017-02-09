@@ -1,8 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, NgModule} from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from "@angular/forms";
 import {Http} from "@angular/http";
 import {DataService} from "../services/data.service";
 import {ToastComponent} from "../shared/toast/toast.component";
+import {BrowserModule} from "@angular/platform-browser";
+import {AgmCoreModule} from "angular2-google-maps/core";
+
+
+
 
 @Component({
   selector: 'app-map',
@@ -11,16 +16,27 @@ import {ToastComponent} from "../shared/toast/toast.component";
 })
 export class MapComponent implements OnInit{
 
-  title: string = 'My first angular2-google-maps project';
-  latitude: number = 51.678418;
-  longitude: number = 10.809007;
+
+  // google maps zoom level
+  zoom: number = 8;
+
+  // initial center position for the map
+  lat: number = 31;
+  lng: number = 34;
+
+
+  clickedMarker(label: string, index: number) {
+    console.log(`clicked the marker: ${label || index}`)
+  }
+
+  markers: marker[] = [];
 
 
   //Added New
   ads = [];
   isLoading = true;
+  isMapLoading = true;
 
-  ad = {};
   isEditing = false;
 
   addAdForm: FormGroup;
@@ -40,9 +56,11 @@ export class MapComponent implements OnInit{
               private dataService: DataService,
               public toast: ToastComponent,
               private formBuilder: FormBuilder) {
+
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
 
     this.getAds();
 
@@ -60,13 +78,45 @@ export class MapComponent implements OnInit{
 
     });
 
+
+  }
+
+
+
+  setLoading():void{
+    this.isLoading=false;
+    this.isMapLoading=false;
+  }
+
+  setMarkers(marker, callback: () => void){
+
+for(let ad of this.ads) {
+
+  var geocoder = new google.maps.Geocoder();
+  geocoder.geocode({'address': ad.address}, function (results, status) {
+
+
+    marker.push({
+      lat: results[0].geometry.location.lat(),
+      lng: results[0].geometry.location.lng(),
+      label: ad.messageName,
+      draggable: false
+    });
+
+    callback();
+
+  });
+}
+
   }
 
   getAds() {
     this.dataService.getAds().subscribe(
       data => this.ads = data,
       error => console.log(error),
-      () => this.isLoading = false
+      () => {this.setMarkers(this.markers,()=>this.setLoading());
+
+      }
     );
   }
 
@@ -85,3 +135,18 @@ export class MapComponent implements OnInit{
   }
 
 }
+
+interface marker {
+  lat: number;
+  lng: number;
+  label?: string;
+  draggable: boolean;
+}
+
+
+@NgModule({
+  imports: [ BrowserModule, AgmCoreModule.forRoot() ],
+  declarations: [ MapComponent ],
+  bootstrap: [ MapComponent ]
+})
+export class AppModule {}

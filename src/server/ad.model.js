@@ -10,8 +10,7 @@ var adSchema = mongoose.Schema({
     startDateWithTime: String,
     endDateWithTime: String,
     numOfdaysToShow: String,
-    messageLatitudeLocation: Number,
-    messageLongitudeLocation:Number
+    address: String
 
 
 

@@ -3,10 +3,29 @@
 <!-- this creates a google map on the page with the given latitude/longitude from -->
 <!-- the component as the initial center of the map: -->
 
-<sebm-google-map [latitude]="latitude" [longitude]="longitude" [zoom]="4">
-    <sebm-google-map-marker *ngFor="let ad of ads"  [latitude]="ad.messageLatitudeLocation" [longitude]="ad.messageLongitudeLocation" [label]="ad.messageTemplatePath"></sebm-google-map-marker>
-</sebm-google-map>
+<sebm-google-map *ngIf="!isMapLoading"
+  [latitude]="lat"
+  [longitude]="lng"
+  [zoom]="zoom"
+  [disableDefaultUI]="false"
+  [zoomControl]="false">
 
+  <sebm-google-map-marker
+    *ngFor="let m of markers; let i = index"
+    (markerClick)="clickedMarker(m.label, i)"
+    [latitude]="m.lat"
+    [longitude]="m.lng"
+    [label]="m.label"
+    [markerDraggable]="m.draggable">
+
+    <sebm-google-map-info-window>
+      <strong>InfoWindow content</strong>
+    </sebm-google-map-info-window>
+
+  </sebm-google-map-marker>
+
+
+</sebm-google-map>
 
 <div class="card" *ngIf="isLoading">
   <h4 class="card-header">Loading...</h4>
@@ -33,13 +52,13 @@
       </tbody>
       <tr *ngFor="let ad of ads" style="width: auto">
         <td>{{ad.messageName}}</td>
-        <td>{{ad.messageLongitudeLocation}},{{ad.messageLatitudeLocation}}</td>
+        <td>{{ad.address}}</td>
         <td>{{ad.messageTemplatePath}}</td>
         <td>
           <button class="btn btn-sm btn-danger" (click)="deleteAd(ad)"><i class="fa fa-trash"></i> Delete</button>
         </td>
       </tr>
-      </tbody>
+
     </table>
   </div>
 </div>

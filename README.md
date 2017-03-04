@@ -9,5 +9,5 @@ npm run be
 
 npm start
 
-additional scripts:
+additional scripts:       
 ng test (for testing using Karma)

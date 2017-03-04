@@ -1,10 +1,11 @@
-import {Component, OnInit, NgModule} from '@angular/core';
+import {Component, OnInit, NgModule, ViewChild, ElementRef, NgZone} from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from "@angular/forms";
 import {Http} from "@angular/http";
 import {DataService} from "../services/data.service";
 import {ToastComponent} from "../shared/toast/toast.component";
 import {BrowserModule} from "@angular/platform-browser";
-import {AgmCoreModule} from "angular2-google-maps/core";
+import {AgmCoreModule, MapsAPILoader} from "angular2-google-maps/core";
+
 
 
 
@@ -16,17 +17,18 @@ import {AgmCoreModule} from "angular2-google-maps/core";
 })
 export class MapComponent implements OnInit{
 
+  public searchControl: FormControl;
+
+  @ViewChild("search")
+  public searchElementRef: ElementRef;
 
   clickedMarker(label: string, index: number) {
     console.log(`clicked the marker: ${label || index}`)
   }
 
-
-
   //Added New
   ads = [];
   isLoading = true;
-  isMapLoading = true;
 
   isEditing = false;
 
@@ -46,7 +48,8 @@ export class MapComponent implements OnInit{
   constructor(private http: Http,
               private dataService: DataService,
               public toast: ToastComponent,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private ngZone: NgZone) {
 
 
   }
@@ -70,7 +73,12 @@ export class MapComponent implements OnInit{
 
     });
 
+
+
+
   }
+
+
 
   setMap(ads) {
     var geocoder;
@@ -105,7 +113,34 @@ export class MapComponent implements OnInit{
       }
     }
 
+    this.setAutocomplete(map);
+
   }
+
+
+setAutocomplete(map: google.maps.Map){
+
+  //create search FormControl
+  this.searchControl = new FormControl();
+  //load Places Autocomplete
+  var autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
+    autocomplete.addListener("place_changed", () => {
+      this.ngZone.run(() => {
+        //get the place result
+        let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+
+        //verify result
+        if (place.geometry === undefined || place.geometry === null) {
+          return;
+        }
+
+        map.setCenter(place.geometry.location);
+      });
+    });
+
+
+
+}
 
 
   getAds() {
@@ -127,6 +162,7 @@ export class MapComponent implements OnInit{
           let pos = this.ads.map(elem => { return elem._id; }).indexOf(ad._id);
           this.ads.splice(pos, 1);
           this.toast.setMessage('item deleted successfully.', 'success');
+          this.setMap(this.ads);
         },
         error => console.log(error)
       );

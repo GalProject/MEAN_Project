@@ -10,4 +10,4 @@ npm run be
 npm start
 
 additional scripts:       
-ng test (for testing using Karma)
+ng test (for debugging the code using Karma)

@@ -8,3 +8,5 @@ mongod
 npm run be
 
 npm start
+
+ng test (for testing using Karma)

@@ -19,12 +19,14 @@ import { DataService } from './services/data.service';
 import { ToastComponent } from './shared/toast/toast.component';
 import { RunItComponent } from './run-it/run-it.component';
 import { StaticsComponent } from './statics/statics.component';
+import { MapComponent } from './map/map.component';
+import { AgmCoreModule } from "angular2-google-maps/core";
 var routing = RouterModule.forRoot([
     { path: '', component: HomeComponent },
     { path: 'about', component: AboutComponent },
-    //Added
     { path: 'runit', component: RunItComponent },
-    { path: 'statics', component: StaticsComponent }
+    { path: 'statics', component: StaticsComponent },
+    { path: 'map', component: MapComponent }
 ]);
 export var AppModule = (function () {
     function AppModule() {
@@ -37,14 +39,18 @@ export var AppModule = (function () {
                 AboutComponent,
                 ToastComponent,
                 RunItComponent,
-                StaticsComponent
+                StaticsComponent,
+                MapComponent
             ],
             imports: [
                 BrowserModule,
                 FormsModule,
                 ReactiveFormsModule,
                 HttpModule,
-                routing
+                routing,
+                AgmCoreModule.forRoot({
+                    apiKey: 'AIzaSyCsTvvvYppcaHK8ms3oZzqv9M3eP8sAl-s'
+                })
             ],
             providers: [
                 DataService,
@@ -57,4 +63,4 @@ export var AppModule = (function () {
     ], AppModule);
     return AppModule;
 }());
-//# sourceMappingURL=D:/Files/WebstormProjects/My_Mean_Project/src/app/app.module.js.map
+//# sourceMappingURL=C:/Users/GalBenEvgi/WebstormProjects/Mean_Project/src/app/app.module.js.map

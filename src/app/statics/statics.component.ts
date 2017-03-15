@@ -71,7 +71,7 @@ export class StaticsComponent implements OnInit {
 
     if (this.flag == true){
       for(i; i<this.ads.length;i++){
-          this.dataToGraphA.push({letter: this.ads[i].messageTemplatePath.toString(), frequency: 0.002222})
+          this.dataToGraphA.push({letter: this.ads[i].messageTemplatePath.toString(), frequency: 0.0111})
           this.dataToGraphB.push({age: this.ads[i].messageTemplatePath.toString(), population: this.ads[i].messageNumOfSeconds.toString()})
       }
       console.log(this.dataToGraphA)

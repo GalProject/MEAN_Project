@@ -19,10 +19,15 @@
         <div class="item-wrap">
           <div *ngFor="let ad of ads" class="item" [ngStyle]="setBorderColor(ad)">
             <h2>{{ad.messageName}}</h2>
-            <img onclick="this.css.changeImage(this);" class="thumb" src="http://i67.tinypic.com/ur3pt.png" width="140px"height="120px"/>
-            <span class="close-icon" ng-click="closeImage(this);"></span>
-            <p>Text:{{ad.messageText}}</p>
-            <div>Message ID: {{ad.messageID}}</div>
+            <img src="{{ad.messagePics}}" width="140px" height="120px" style="margin-bottom: 20px"/>
+            <h5>Text:</h5>
+              {{ad.messageText}}
+            <h5>Location:</h5>
+            {{ad.messageLocation}}
+            <h5>Template:</h5>
+            {{ad.messageTemplatePath}}
+            <h5>Date:</h5>
+            {{ad.startDateWithTime}}
           </div>
         </div>
       </div>

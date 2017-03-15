@@ -24,16 +24,16 @@
         <th>Text</th>
         <th>Pics</th>
         <th>Path</th>
-        <th>Seconds</th>
+        <!--<th>Seconds</th>-->
         <th>Start Date Time</th>
-        <th>End Date Time</th>
+        <!--<th>End Date Time</th>-->
         <th>Days To Show</th>
         <th>Location</th>
       </tr>
       </thead>
       <tbody *ngIf="ads.length === 0">
       <tr>
-        <td colspan="10">There are no ads in the DB. Add a new ad below.</td>
+        <td colspan="8">There are no ads in the DB. Add a new ad below.</td>
       </tr>
       </tbody>
       <tbody *ngIf="!isEditing" style="width: auto">
@@ -41,11 +41,11 @@
         <td>{{ad.messageName}}</td>
         <td>{{ad.messageID}}</td>
         <td>{{ad.messageText}}</td>
-        <td>{{ad.messagePics}}</td>
+        <td><img src={{ad.messagePics}} width="30px" height="30px"></td>
         <td>{{ad.messageTemplatePath}}</td>
-        <td>{{ad.messageNumOfSeconds}}</td>
+        <!--<td>{{ad.messageNumOfSeconds}}</td>-->
         <td>{{ad.startDateWithTime}}</td>
-        <td>{{ad.endDateWithTime}}</td>
+        <!--<td>{{ad.endDateWithTime}}</td>-->
         <td>{{ad.numOfdaysToShow}}</td>
         <td>{{ad.address}}</td>
         <td>
@@ -68,13 +68,32 @@
             </div>
             Pics:
             <div class="form-group form-control">
-              <select style="padding-left: 0px" multiple name="messagePics" [(ngModel)]="ad.messagePics" placeholder="messagePics" required>
-                <option value="pic1">pic 1</option>
-                <option value="pic2">pic 2</option>
-                <option value="pic3">pic 3</option>
-                <option value="pic4">pic 4</option>
-                <option value="pic5">pic 5</option>
-              </select>
+              <table class="table table-sm" name="pics">
+                <thead id="pics">
+                <tr>
+                  <th>
+                    <img src="http://i64.tinypic.com/2jbuwx2.png" width="142" height="52">
+                  </th>
+                  <th>
+                    <img src="http://i67.tinypic.com/2uhlks0.jpg" width="124" height="62">
+                  </th>
+                  <th>
+                    <img src="http://i65.tinypic.com/e6t5xz.png" width="142" height="72">
+                  </th>
+                  <th>
+                    <img src="http://i66.tinypic.com/2jfdq1i.jpg" width="172" height="72">
+                  </th>
+                  <th>
+                    <select style="padding-left: 0px" name="messagePics" [(ngModel)]="ad.messagePics" placeholder="messagePics" required>
+                      <option value="http://i64.tinypic.com/2jbuwx2.png">pic 1</option>
+                      <option value="http://i67.tinypic.com/2uhlks0.jpg">pic 2</option>
+                      <option value="http://i65.tinypic.com/e6t5xz.png">pic 3</option>
+                      <option value="http://i66.tinypic.com/2jfdq1i.jpg">pic 4</option>
+                    </select>
+                  </th>
+                </tr>
+                </thead>
+              </table>
             </div>
 
             Template:
@@ -87,15 +106,15 @@
             </div>
 
 
-            <div class="form-group">
-              <input class="form-control" type="number" name="messageNumOfSeconds" [(ngModel)]="ad.messageNumOfSeconds" placeholder="messageNumOfSeconds"  min="0"  max="999999" required>
-            </div>
+            <!--<div class="form-group">-->
+              <!--<input class="form-control" type="number" name="messageNumOfSeconds" [(ngModel)]="ad.messageNumOfSeconds" placeholder="messageNumOfSeconds"  min="0"  max="999999" required>-->
+            <!--</div>-->
             <div class="form-group">
               <input class="form-control" type="datetime" name="startDateWithTime" [(ngModel)]="ad.startDateWithTime" placeholder="startDateWithTime" required>
             </div>
-            <div class="form-group">
-              <input class="form-control" type="datetime" name="endDateWithTime" [(ngModel)]="ad.endDateWithTime" placeholder="endDateWithTime" required>
-            </div>
+            <!--<div class="form-group">-->
+              <!--<input class="form-control" type="datetime" name="endDateWithTime" [(ngModel)]="ad.endDateWithTime" placeholder="endDateWithTime" required>-->
+            <!--</div>-->
             Days:
             <div class="form-group form-control">
               <select  multiple name="numOfdaysToShow" [(ngModel)]="ad.numOfdaysToShow" placeholder="numOfdaysToShow" required>
@@ -147,13 +166,38 @@
       <!--Add Pics-->
       Pics:
       <div class="form-group">
-        <select style="padding-left: 0px" size="5" multiple name="messagePics" formControlName="messagePics">
-          <option value="pic1">pic 1</option>
-          <option value="pic2">pic 2</option>
-          <option value="pic3">pic 3</option>
-          <option value="pic4">pic 4</option>
-          <option value="pic5">pic 5</option>
-        </select>
+        <table class="table table-sm" name="pics">
+          <thead id="pics">
+          <tr>
+            <th>
+            <img src="http://i64.tinypic.com/2jbuwx2.png" width="142" height="52">
+            </th>
+            <th>
+              <img src="http://i67.tinypic.com/2uhlks0.jpg" width="124" height="62">
+            </th>
+            <th>
+              <img src="http://i65.tinypic.com/e6t5xz.png" width="142" height="72">
+            </th>
+            <th>
+              <img src="http://i66.tinypic.com/2jfdq1i.jpg" width="172" height="72">
+            </th>
+             <th>
+            <select style="padding-left: 0px" size="4" name="messagePics" formControlName="messagePics">
+              <option value="http://i64.tinypic.com/2jbuwx2.png">pic 1</option>
+              <option value="http://i67.tinypic.com/2uhlks0.jpg">pic 2</option>
+              <option value="http://i65.tinypic.com/e6t5xz.png">pic 3</option>
+              <option value="http://i66.tinypic.com/2jfdq1i.jpg">pic 4</option>
+            </select>
+            </th>
+          </tr>
+          </thead>
+        </table>
+      </div>
+
+      <!--Add Start Date & Time-->
+      Start Date and Time:
+      <div class="form-group">
+        <input class="form-control" type="datetime-local" value="2016-08-19 13:45:00" id="startDateWithTime" name="startDateWithTime" formControlName="startDateWithTime" >
       </div>
 
       <!--Add Template Path-->
@@ -167,22 +211,18 @@
       </div>
 
 
-      <!--Add number of Seconds-->
-      <div class="form-group">
-        <input class="form-control" type="number" name="messageNumOfSeconds" formControlName="messageNumOfSeconds" placeholder="Ad Seconds" min="0" max="9999">
-      </div>
+      <!--&lt;!&ndash;Add number of Seconds&ndash;&gt;-->
+      <!--<div class="form-group">-->
+        <!--<input class="form-control" type="number" name="messageNumOfSeconds" formControlName="messageNumOfSeconds" placeholder="Ad Seconds" min="0" max="9999">-->
+      <!--</div>-->
 
-      <!--Add Start Date & Time-->
-      Start Date and Time:
-      <div class="form-group">
-        <input class="form-control" type="datetime-local" value="2016-08-19 13:45:00" id="startDateWithTime" name="startDateWithTime" formControlName="startDateWithTime" >
-      </div>
 
-      <!--Add End Date & Time-->
-      End Date and Time:
-      <div class="form-group">
-        <input class="form-control" type="datetime-local" value="2017-08-19 13:45:00" id="endDateWithTime" name="endDateWithTime" formControlName="endDateWithTime">
-      </div>
+
+      <!--&lt;!&ndash;Add End Date & Time&ndash;&gt;-->
+      <!--End Date and Time:-->
+      <!--<div class="form-group">-->
+        <!--<input class="form-control" type="datetime-local" value="2017-08-19 13:45:00" id="endDateWithTime" name="endDateWithTime" formControlName="endDateWithTime">-->
+      <!--</div>-->
 
       <!--Add Days-->
       Days:

@@ -21,4 +21,4 @@ export var AboutComponent = (function () {
     ], AboutComponent);
     return AboutComponent;
 }());
-//# sourceMappingURL=D:/Files/WebstormProjects/My_Mean_Project/src/app/about/about.component.js.map
+//# sourceMappingURL=C:/Users/GalBenEvgi/WebstormProjects/Mean_Project/src/app/about/about.component.js.map

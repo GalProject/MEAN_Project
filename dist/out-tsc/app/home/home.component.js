@@ -20,8 +20,6 @@ export var HomeComponent = (function () {
         this.formBuilder = formBuilder;
         this.ads = [];
         this.isLoading = true;
-        this.daysAvailable = ['Sunday', 'Monday',
-            'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         this.ad = {};
         this.isEditing = false;
         this.messageName = new FormControl('', Validators.required);
@@ -30,10 +28,10 @@ export var HomeComponent = (function () {
         this.messagePics = new FormControl('', Validators.required);
         this.messageTemplatePath = new FormControl('', Validators.required);
         this.messageNumOfSeconds = new FormControl('', Validators.required);
-        // messageTimeSet = new FormControl('', Validators.required);
         this.startDateWithTime = new FormControl('', Validators.required);
         this.endDateWithTime = new FormControl('', Validators.required);
         this.numOfdaysToShow = new FormControl('', Validators.required);
+        this.address = new FormControl('', Validators.required);
     }
     HomeComponent.prototype.ngOnInit = function () {
         this.getAds();
@@ -44,15 +42,10 @@ export var HomeComponent = (function () {
             messagePics: this.messagePics,
             messageTemplatePath: this.messageTemplatePath,
             messageNumOfSeconds: this.messageNumOfSeconds,
-            // messageTimeSet: this.formBuilder.group({
-            // startDateTime: "",
-            // endDateTime: "",
-            // numOfdaysToShow: [""]
-            //   }
-            // )
             startDateWithTime: this.startDateWithTime,
             endDateWithTime: this.endDateWithTime,
-            numOfdaysToShow: this.numOfdaysToShow
+            numOfdaysToShow: this.numOfdaysToShow,
+            address: this.address
         });
     };
     HomeComponent.prototype.getAds = function () {
@@ -108,4 +101,4 @@ export var HomeComponent = (function () {
     ], HomeComponent);
     return HomeComponent;
 }());
-//# sourceMappingURL=D:/Files/WebstormProjects/My_Mean_Project/src/app/home/home.component.js.map
+//# sourceMappingURL=C:/Users/GalBenEvgi/WebstormProjects/Mean_Project/src/app/home/home.component.js.map

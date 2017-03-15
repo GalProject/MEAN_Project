@@ -21,4 +21,4 @@ export var AppComponent = (function () {
     ], AppComponent);
     return AppComponent;
 }());
-//# sourceMappingURL=D:/Files/WebstormProjects/My_Mean_Project/src/app/app.component.js.map
+//# sourceMappingURL=C:/Users/GalBenEvgi/WebstormProjects/Mean_Project/src/app/app.component.js.map

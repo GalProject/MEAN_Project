@@ -18,4 +18,4 @@ var context = require.context('./', true, /\.spec\.ts$/);
 context.keys().map(context);
 // Finally, start Karma to run the tests.
 __karma__.start();
-//# sourceMappingURL=D:/Files/WebstormProjects/My_Mean_Project/src/test.js.map
+//# sourceMappingURL=C:/Users/GalBenEvgi/WebstormProjects/Mean_Project/src/test.js.map

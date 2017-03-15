@@ -29,4 +29,4 @@ describe('Component: App', function () {
         expect(de[1].attributes['routerLink']).toBe('/about');
     });
 });
-//# sourceMappingURL=D:/Files/WebstormProjects/My_Mean_Project/src/app/app.component.spec.js.map
+//# sourceMappingURL=C:/Users/GalBenEvgi/WebstormProjects/Mean_Project/src/app/app.component.spec.js.map

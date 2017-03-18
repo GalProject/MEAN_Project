@@ -34,7 +34,7 @@ export class AppComponent implements OnInit{
 
 
   ngOnInit(){
-    this.getMails();
+    //this.getMails();
 
     this.addMailForm = this.formBuilder.group({
       messageMail: this.messageMail,
@@ -42,13 +42,15 @@ export class AppComponent implements OnInit{
     });
   }
 
-  getMails() {
-    this.dataService.getMails().subscribe(
-      data => this.mails = data,
-      error => console.log(error),
-      () => this.isLoading = false
-    );
-  }
+
+  //
+  // getMails() {
+  //   this.dataService.getMails().subscribe(
+  //     data => this.mails = data,
+  //     error => console.log(error),
+  //     () => this.isLoading = false
+  //   );
+  // }
 
   addMail() {
     this.dataService.addMail(this.addMailForm.value).subscribe(

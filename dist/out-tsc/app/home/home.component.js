@@ -27,7 +27,7 @@ export var HomeComponent = (function () {
         this.messageText = new FormControl('', Validators.required);
         this.messagePics = new FormControl('', Validators.required);
         this.messageTemplatePath = new FormControl('', Validators.required);
-        this.messageNumOfSeconds = new FormControl('');
+        //messageNumOfSeconds = new FormControl('',);
         this.startDateWithTime = new FormControl('', Validators.required);
         this.endDateWithTime = new FormControl('');
         this.numOfdaysToShow = new FormControl('', Validators.required);
@@ -41,7 +41,7 @@ export var HomeComponent = (function () {
             messageText: this.messageText,
             messagePics: this.messagePics,
             messageTemplatePath: this.messageTemplatePath,
-            messageNumOfSeconds: this.messageNumOfSeconds,
+            //messageNumOfSeconds: this.messageNumOfSeconds,
             startDateWithTime: this.startDateWithTime,
             endDateWithTime: this.endDateWithTime,
             numOfdaysToShow: this.numOfdaysToShow,

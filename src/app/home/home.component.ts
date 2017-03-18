@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   messageText = new FormControl('', Validators.required);
   messagePics = new FormControl('', Validators.required);
   messageTemplatePath = new FormControl('', Validators.required);
-  messageNumOfSeconds = new FormControl('',);
+  //messageNumOfSeconds = new FormControl('',);
   startDateWithTime = new FormControl('', Validators.required);
   endDateWithTime = new FormControl('',);
   numOfdaysToShow = new FormControl('', Validators.required);
@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
       messageText: this.messageText,
       messagePics: this.messagePics,
       messageTemplatePath: this.messageTemplatePath,
-      messageNumOfSeconds: this.messageNumOfSeconds,
+      //messageNumOfSeconds: this.messageNumOfSeconds,
       startDateWithTime: this.startDateWithTime,
       endDateWithTime:this.endDateWithTime,
       numOfdaysToShow:this.numOfdaysToShow,

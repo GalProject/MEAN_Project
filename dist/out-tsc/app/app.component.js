@@ -26,16 +26,20 @@ export var AppComponent = (function () {
         this.emailAddressMail = new FormControl('', Validators.required);
     }
     AppComponent.prototype.ngOnInit = function () {
-        this.getMails();
+        //this.getMails();
         this.addMailForm = this.formBuilder.group({
             messageMail: this.messageMail,
             emailAddressMail: this.emailAddressMail
         });
     };
-    AppComponent.prototype.getMails = function () {
-        var _this = this;
-        this.dataService.getMails().subscribe(function (data) { return _this.mails = data; }, function (error) { return console.log(error); }, function () { return _this.isLoading = false; });
-    };
+    //
+    // getMails() {
+    //   this.dataService.getMails().subscribe(
+    //     data => this.mails = data,
+    //     error => console.log(error),
+    //     () => this.isLoading = false
+    //   );
+    // }
     AppComponent.prototype.addMail = function () {
         var _this = this;
         this.dataService.addMail(this.addMailForm.value).subscribe(function (res) {

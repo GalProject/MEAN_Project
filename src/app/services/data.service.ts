@@ -12,6 +12,15 @@ export class DataService {
 
   constructor(private http: Http) { }
 
+  //Contact Us
+  addMail(mail): Observable<any> {
+    return this.http.post('/mail', JSON.stringify(mail), this.options);
+  }
+  getMails(): Observable<any> {
+    return this.http.get('/mails').map(res => res.json());
+  }
+
+  //Ads
   getAds(): Observable<any> {
     return this.http.get('/ads').map(res => res.json());
   }

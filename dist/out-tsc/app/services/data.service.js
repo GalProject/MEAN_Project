@@ -16,6 +16,14 @@ export var DataService = (function () {
         this.headers = new Headers({ 'Content-Type': 'application/json', 'charset': 'UTF-8' });
         this.options = new RequestOptions({ headers: this.headers });
     }
+    //Contact Us
+    DataService.prototype.addMail = function (mail) {
+        return this.http.post('/mail', JSON.stringify(mail), this.options);
+    };
+    DataService.prototype.getMails = function () {
+        return this.http.get('/mails').map(function (res) { return res.json(); });
+    };
+    //Ads
     DataService.prototype.getAds = function () {
         return this.http.get('/ads').map(function (res) { return res.json(); });
     };

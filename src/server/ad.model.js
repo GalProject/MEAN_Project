@@ -18,4 +18,5 @@ var adSchema = mongoose.Schema({
 
 var Ad = mongoose.model('Ad', adSchema);
 
+
 module.exports = Ad;

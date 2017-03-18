@@ -82,7 +82,7 @@
 
     <div class="footer-left">
 
-      <h2>Developed By <span><br> Gal Ben Evgi</span></h2>
+      <h2>Developed By (GrG TEAM) <span><br> Gal Ben Evgi<br>Rave Viner<br>Gal Malca</span></h2>
 
       <!--<p class="footer-links">-->
         <!--<a href="#">Home</a>-->
@@ -113,14 +113,19 @@
 
     <div class="footer-right">
 
-      <p>Contact Me</p>
+      <p>Contact Us:</p>
 
-      <form action="#" method="post">
+      <form class="form" [formGroup]="addMailForm" (ngSubmit)="addMail()">
+        <div>
 
-        <input type="email" name="email" placeholder="Your Email" required/>
-        <textarea name="message" placeholder="Your Message"></textarea>
-        <button>Send</button>
-
+          <div>
+            <input type="email" formControlName="emailAddressMail" placeholder="email">
+          </div>
+          <div>
+          <textarea formControlName="messageMail" placeholder="Your Message"></textarea>
+          </div>
+            <button class="btn btn-primary" type="submit" [disabled]="!addMailForm.valid"><i class="fa fa-floppy-o"></i>Add</button>
+        </div>
       </form>
 
     </div>

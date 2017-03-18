@@ -20,12 +20,33 @@ mongoose.Promise = global.Promise;
 
 // Models
 var Ad = require('./ad.model.js');
+var Mail = require('./mail.model.js');
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   console.log('Connected to MongoDB');
 
   // APIs
+
+  //Mails
+
+  // select all
+  app.get('/mails', function(req, res) {
+    Ad.find({}, function(err, docs) {
+      if(err) return console.error(err);
+      res.json(docs);
+    });
+  });
+
+  app.post('/mail', function(req, res) {
+    var obj = new Mail(req.body);
+    console.log(obj);
+    obj.save(function(err, obj) {
+      if(err) return console.error(err);
+      res.status(200).json(obj);
+    });
+  });
+
   // select all
   app.get('/ads', function(req, res) {
     Ad.find({}, function(err, docs) {

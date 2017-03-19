@@ -17,4 +17,6 @@ ng test (use for debugging the code with Karma)
 Responsive Design:
 
 ![My image](http://i65.tinypic.com/nb820z.png)
+![My image](http://i66.tinypic.com/2rrxf92.png)
+
 

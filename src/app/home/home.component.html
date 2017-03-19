@@ -9,10 +9,6 @@
 
 
 
-
-
-
-
 <div class="card" *ngIf="!isLoading">
   <h4 class="card-header">Current Ads ({{ads.length}})</h4>
   <div class="card-block">
@@ -24,7 +20,7 @@
         <th>Text</th>
         <th>Pics</th>
         <th>Path</th>
-        <th>Seconds</th>
+        <!--<th>Seconds</th>-->
         <th>Start Date Time</th>
         <!--<th>End Date Time</th>-->
         <th>Days To Show</th>
@@ -117,14 +113,14 @@
             <!--</div>-->
             Days:
             <div class="form-group form-control">
-              <select  multiple name="numOfdaysToShow" [(ngModel)]="ad.numOfdaysToShow" placeholder="numOfdaysToShow" required>
-                <option value="0">Sunday</option>
-                <option value="1">Monday</option>
-                <option value="2">Tuesday</option>
-                <option value="3">Wednesday</option>
-                <option value="4">Thursday</option>
-                <option value="5">Friday</option>
-                <option value="6">Saturday</option>
+              <select name="numOfdaysToShow" [(ngModel)]="ad.numOfdaysToShow" placeholder="numOfdaysToShow">
+                <option value="Sunday">Sunday</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
               </select>
             </div>
 
@@ -228,13 +224,13 @@
       Days:
       <div class="form-group">
         <select  multiple name="numOfdaysToShow" size="7" formControlName="numOfdaysToShow">
-          <option value="0">Sunday</option>
-          <option value="1">Monday</option>
-          <option value="2">Tuesday</option>
-          <option value="3">Wednesday</option>
-          <option value="4">Thursday</option>
-          <option value="5">Friday</option>
-          <option value="6">Saturday</option>
+          <option value="Sunday">Sunday</option>
+          <option value="Monday">Monday</option>
+          <option value="Tuesday">Tuesday</option>
+          <option value="Wednesday">Wednesday</option>
+          <option value="Thursday">Thursday</option>
+          <option value="Thursday">Thursday</option>
+          <option value="Saturday">Saturday</option>
         </select>
       </div>
 

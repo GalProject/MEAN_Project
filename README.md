@@ -2,6 +2,7 @@
 Final Project using MEAN (MongoDB,Express,Angular2,Node.js)
 
 to launch (scripts):
+
 npm i (for initialize only)
 
 mongod

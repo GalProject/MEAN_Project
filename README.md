@@ -11,3 +11,9 @@ npm start
 
 additional scripts:       
 ng test (use for debugging the code with Karma)
+
+# Preview
+
+Responsive Design:
+![My image](http://i65.tinypic.com/2emijva.png)
+

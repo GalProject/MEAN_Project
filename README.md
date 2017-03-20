@@ -25,3 +25,8 @@ Statics:
 
 ![My image](http://i67.tinypic.com/4pxo9t.png)
 
+Developers:
+
+![My image](http://i63.tinypic.com/11tptg1.png)
+
+

@@ -12,6 +12,7 @@ import {Http} from "@angular/http";
 import {DataService} from "../services/data.service";
 import {ToastComponent} from "../shared/toast/toast.component";
 import {FormBuilder, FormGroup, FormControl, Validators} from "@angular/forms";
+import {Hash} from "crypto";
 
 @Component({
   selector: 'app-statics',
@@ -62,22 +63,47 @@ export class StaticsComponent implements OnInit {
   private y: any;
   private svg: any;
   private g: any;
+  private freq: any = 0;
   public dataToGraphA = [];
   public dataToGraphB = [];
+  public dataAA = 0;
+  public dataBB = 0;
+  public dataCC = 0;
 
   setDataToGraphs(){
     console.log(this.ads)
     var i=0;
+    var arrayOfData = [];
 
-    if (this.flag == true){
-      for(i; i<this.ads.length;i++){
-          this.dataToGraphA.push({letter: this.ads[i].messageTemplatePath.toString(), frequency: 0.0441})
-          this.dataToGraphB.push({age: this.ads[i].messageTemplatePath.toString(), population: this.ads[i].messageID.toString()})
+    if (this.flag != true) {
+    } else {
+      for (i; i < this.ads.length; i++) {
+        if (this.ads[i].messageTemplatePath.toString() == "A") {
+          this.freq = 0.014
+          this.dataAA += this.freq;
+        }
+        else if (this.ads[i].messageTemplatePath.toString() == "B") {
+          this.freq = 0.038
+          this.dataBB += this.freq;
+        }
+        else {
+          this.freq = 0.061
+          this.dataCC += this.freq;
+        }
+
+        this.dataToGraphA.push({letter: this.ads[i].messageTemplatePath, frequency: this.freq})
       }
+      this.dataToGraphB.push({age: "A", population: this.dataAA})
+      this.dataToGraphB.push({age: "B", population: this.dataBB})
+      this.dataToGraphB.push({age: "C", population: this.dataCC})
+
       console.log(this.dataToGraphA)
       console.log(STATISTICS)
     }
     this.flag=false;
+
+
+
     this.initSvg();
     this.initAxis();
     this.drawAxis();

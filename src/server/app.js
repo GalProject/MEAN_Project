@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('dev'));
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/test');
+mongoose.connect('mongodb://localhost:27017/adMeProject');
 var db = mongoose.connection;
 mongoose.Promise = global.Promise;
 
@@ -22,14 +22,23 @@ mongoose.Promise = global.Promise;
 var Ad = require('./ad.model.js');
 var Mail = require('./mail.model.js');
 
+
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   console.log('Connected to MongoDB');
 
+  // db.mails.group(
+  //   {
+  //     key: { ord_dt: 1, 'item.sku': 1 },
+  //     cond: { ord_dt: { $gt: new Date( '01/01/2012' ) } },
+  //     reduce: function ( curr, result ) { },
+  //     initial: { }
+  //   }
+  // )
+
   // APIs
 
   //Mails
-
   // select all
   app.get('/mails', function(req, res) {
     Ad.find({}, function(err, docs) {

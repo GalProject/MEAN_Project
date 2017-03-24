@@ -73,7 +73,6 @@ export class StaticsComponent implements OnInit {
   setDataToGraphs(){
     console.log(this.ads)
     var i=0;
-    var arrayOfData = [];
 
     if (this.flag != true) {
     } else {
@@ -98,6 +97,7 @@ export class StaticsComponent implements OnInit {
       this.dataToGraphB.push({age: "C", population: this.dataCC})
 
       console.log(this.dataToGraphA)
+      console.log(this.dataToGraphB)
       console.log(STATISTICS)
     }
     this.flag=false;

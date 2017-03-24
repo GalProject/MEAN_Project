@@ -95,10 +95,10 @@ export class StaticsComponent implements OnInit {
       if (this.dataAA != 0){
       this.dataToGraphB.push({age: "A", population: this.dataAA})
       }
-      else if (this.dataBB != 0){
+      if (this.dataBB != 0){
       this.dataToGraphB.push({age: "B", population: this.dataBB})
       }
-      else if (this.dataCC != 0){
+      if (this.dataCC != 0){
       this.dataToGraphB.push({age: "C", population: this.dataCC})
       }
 

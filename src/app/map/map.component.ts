@@ -90,7 +90,7 @@ export class MapComponent implements OnInit{
     geocoder = new google.maps.Geocoder();
     var latlng = new google.maps.LatLng(-34.397, 150.644);
     var myOptions = {
-      zoom: 8,
+      zoom: 4,
       center: latlng,
       mapTypeControl: true,
       mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},

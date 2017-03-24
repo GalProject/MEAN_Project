@@ -27,16 +27,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   console.log('Connected to MongoDB');
 
-  // db.mails.group(
-  //   {
-  //     key: { ord_dt: 1, 'item.sku': 1 },
-  //     cond: { ord_dt: { $gt: new Date( '01/01/2012' ) } },
-  //     reduce: function ( curr, result ) { },
-  //     initial: { }
-  //   }
-  // )
-
-  // APIs
+  // APIs List
 
   //Mails
   // select all
@@ -47,6 +38,7 @@ db.once('open', function() {
     });
   });
 
+  //save
   app.post('/mail', function(req, res) {
     var obj = new Mail(req.body);
     console.log(obj);
@@ -56,6 +48,7 @@ db.once('open', function() {
     });
   });
 
+  //Ads
   // select all
   app.get('/ads', function(req, res) {
     Ad.find({}, function(err, docs) {
@@ -112,7 +105,7 @@ db.once('open', function() {
     res.sendFile(path.join(__dirname,'/../../src/index.html'));
   });
 
-
+  //server is running message on start
   app.listen(app.get('port'), function() {
     console.log('Angular 2 Full Stack listening on port '+app.get('port'));
   });

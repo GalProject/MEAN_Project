@@ -34,24 +34,12 @@ export class AppComponent implements OnInit{
 
 
   ngOnInit(){
-    //this.getMails();
 
     this.addMailForm = this.formBuilder.group({
       messageMail: this.messageMail,
       emailAddressMail: this.emailAddressMail
     });
   }
-
-
-  //
-  // getMails() {
-  //   this.dataService.getMails().subscribe(
-  //     data => this.mails = data,
-  //     error => console.log(error),
-  //     () => this.isLoading = false
-  //   );
-  // }
-
   addMail() {
     this.dataService.addMail(this.addMailForm.value).subscribe(
       res => {

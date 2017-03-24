@@ -6,7 +6,6 @@ var adSchema = mongoose.Schema({
     messageText: String,
     messagePics: [String],
     messageTemplatePath: String,
-    //messageNumOfSeconds: Number,
     startDateWithTime: String,
     endDateWithTime: String,
     numOfdaysToShow: String,

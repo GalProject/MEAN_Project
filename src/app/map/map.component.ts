@@ -1,5 +1,5 @@
 import {Component, OnInit, NgModule, ViewChild, ElementRef, NgZone} from '@angular/core';
-import {FormGroup, FormControl, Validators, FormBuilder} from "@angular/forms";
+import {FormGroup, FormControl, Validators, FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {Http} from "@angular/http";
 import {DataService} from "../services/data.service";
 import {ToastComponent} from "../shared/toast/toast.component";
@@ -43,12 +43,14 @@ export class MapComponent implements OnInit{
   endDateWithTime = new FormControl('', Validators.required);
   numOfdaysToShow = new FormControl('', Validators.required);
   messageLocation = new FormControl('', Validators.required);
+  address = new FormControl('', Validators.required);
 
 
   constructor(private http: Http,
               private dataService: DataService,
               public toast: ToastComponent,
               private formBuilder: FormBuilder,
+              private mapsAPILoader: MapsAPILoader,
               private ngZone: NgZone) {
 
 
@@ -69,7 +71,8 @@ export class MapComponent implements OnInit{
       startDateWithTime: this.startDateWithTime,
       endDateWithTime: this.endDateWithTime,
       numOfdaysToShow: this.numOfdaysToShow,
-      messageLocation: this.messageLocation
+      messageLocation: this.messageLocation,
+      address: this.address
 
     });
 
@@ -174,7 +177,8 @@ setAutocomplete(map: google.maps.Map){
 
 
 @NgModule({
-  imports: [ BrowserModule, AgmCoreModule.forRoot() ],
+  imports: [ BrowserModule, AgmCoreModule.forRoot(),FormsModule,
+    ReactiveFormsModule ],
   declarations: [ MapComponent ],
   bootstrap: [ MapComponent ]
 })

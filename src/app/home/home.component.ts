@@ -1,10 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, NgZone, ElementRef, ViewChild} from '@angular/core';
 import { Http } from '@angular/http';
-import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
+import {FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
+
+import {NgModule} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+
+import {BrowserModule} from "@angular/platform-browser";
+import {AgmCoreModule, MapsAPILoader} from "angular2-google-maps/core";
+
 
 import { ToastComponent } from '../shared/toast/toast.component';
 
 import { DataService } from '../services/data.service';
+
 
 @Component({
   selector: 'app-home',
@@ -12,6 +20,10 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+
+  @ViewChild("search")
+  public searchElementRef: ElementRef;
 
   ads = [];
   isLoading = true;
@@ -35,12 +47,18 @@ export class HomeComponent implements OnInit {
   constructor(private http: Http,
               private dataService: DataService,
               public toast: ToastComponent,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder,
+              private ngZone: NgZone,
+              private mapsAPILoader: MapsAPILoader) { }
+
+
 
   ngOnInit() {
 
 
     this.getAds();
+
+
 
     this.addAdForm = this.formBuilder.group({
       messageName: this.messageName,
@@ -62,7 +80,9 @@ export class HomeComponent implements OnInit {
     this.dataService.getAds().subscribe(
       data => this.ads = data,
       error => console.log(error),
-      () => this.isLoading = false
+      () => {this.isLoading = false;
+        this.setAutocomplete();
+      }
     );
   }
 
@@ -116,4 +136,35 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  setAutocomplete(){
+
+    //load Places Autocomplete
+    var autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
+    autocomplete.addListener("place_changed", () => {
+      this.ngZone.run(() => {
+        //get the place result
+        let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+
+        //verify result
+        if (place.geometry === undefined || place.geometry === null) {
+          return;
+        }
+
+      });
+    });
+
+
+
+  }
+
+
 }
+
+@NgModule({
+  imports: [ BrowserModule, AgmCoreModule.forRoot(),FormsModule,
+    ReactiveFormsModule ],
+  declarations: [ HomeComponent ],
+  bootstrap: [ HomeComponent ]
+})
+export class AppModule {}
+

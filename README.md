@@ -20,6 +20,7 @@ Responsive Design:
 
 ![My image](http://i65.tinypic.com/nb820z.png)
 ![My image](http://i66.tinypic.com/2rrxf92.png)
+![My image](http://i64.tinypic.com/30jiq7p.png)
 ![My image](http://i66.tinypic.com/5fkx84.png)
 
 Statics:

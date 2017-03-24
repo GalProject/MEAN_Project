@@ -92,9 +92,15 @@ export class StaticsComponent implements OnInit {
 
         this.dataToGraphA.push({letter: this.ads[i].messageTemplatePath, frequency: this.freq})
       }
+      if (this.dataAA != 0){
       this.dataToGraphB.push({age: "A", population: this.dataAA})
+      }
+      else if (this.dataBB != 0){
       this.dataToGraphB.push({age: "B", population: this.dataBB})
+      }
+      else if (this.dataCC != 0){
       this.dataToGraphB.push({age: "C", population: this.dataCC})
+      }
 
       console.log(this.dataToGraphA)
       console.log(this.dataToGraphB)

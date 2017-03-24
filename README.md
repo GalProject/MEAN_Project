@@ -25,6 +25,10 @@ Statics:
 
 ![My image](http://i67.tinypic.com/4pxo9t.png)
 
+About:
+
+![My image](http://i67.tinypic.com/2e4xan8.png)
+
 Developers:
 
 ![My image](http://i63.tinypic.com/11tptg1.png)

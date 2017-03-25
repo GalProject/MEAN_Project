@@ -1,3 +1,5 @@
+
+
 <h4 class="card-header">Map</h4>
 
 <!-- this creates a google map on the page with the given latitude/longitude from -->
@@ -12,6 +14,9 @@
   <h4 class="card-header"><div class="fa fa-search"></div> Search for your Location</h4>
   <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search>
 </div>
+
+<app-toast [message]="toast.message"></app-toast>
+
 
 <div class="card" *ngIf="isLoading">
   <h4 class="card-header">Loading...</h4>
@@ -33,7 +38,7 @@
       </thead>
       <tbody *ngIf="ads.length === 0">
       <tr>
-        <td colspan="4">There are no ads in the DB. Add a new ad below.</td>
+        <td colspan="4">There are no ads in the DB.</td>
       </tr>
       </tbody>
       <tr *ngFor="let ad of ads" style="width: auto">

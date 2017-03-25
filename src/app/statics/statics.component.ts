@@ -101,10 +101,6 @@ export class StaticsComponent implements OnInit {
       if (this.dataCC != 0){
       this.dataToGraphB.push({age: "C", population: this.dataCC})
       }
-
-      console.log(this.dataToGraphA)
-      console.log(this.dataToGraphB)
-      console.log(STATISTICS)
     }
     this.flag=false;
 

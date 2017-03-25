@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import {DataService} from "../services/data.service";
+import {ToastComponent} from "../shared/toast/toast.component";
 
-declare var jQuery:any;
+
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -8,6 +10,11 @@ declare var jQuery:any;
 })
 export class AboutComponent {
 
-  constructor() { }
+  constructor(
+              private dataService: DataService,
+              public toast: ToastComponent,) {
+
+
+  }
 
 }

@@ -1,4 +1,5 @@
-
+<h4 class="card-header">Run it!</h4>
+<h4 class="card-header">Current Ads ({{ads.length}})</h4>
 <div class="card" *ngIf="isLoading">
   <h4 class="card-header">Loading...</h4>
   <div class="card-block text-xs-center">
@@ -9,7 +10,6 @@
 <app-toast [message]="toast.message"></app-toast>
 
 <div class="card">
-  <h4 class="card-header">Run it!</h4>
 
 
   <div class="general-desc-wrap">

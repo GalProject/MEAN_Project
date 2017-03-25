@@ -1,12 +1,12 @@
+<app-toast [message]="toast.message"></app-toast>
+
+<h4 class="card-header">Manage Panel</h4>
 <div class="card" *ngIf="isLoading">
   <h4 class="card-header">Loading...</h4>
   <div class="card-block text-xs-center">
     <i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
   </div>
 </div>
-
-<app-toast [message]="toast.message"></app-toast>
-
 
 
 <div class="card" *ngIf="!isLoading">
@@ -16,13 +16,11 @@
       <thead class="thead-default" style="width: auto">
       <tr style="width: 15px;"  >
         <th>Name</th>
-        <th>Shared With Messages</th>
-        <th>Text</th>
-        <th>Pics</th>
-        <th>Path</th>
-        <!--<th>Seconds</th>-->
-        <th>Start Date Time</th>
-        <!--<th>End Date Time</th>-->
+        <th>Number</th>
+        <th>Content</th>
+        <th>Pic</th>
+        <th>Template</th>
+        <th>Date</th>
         <th>Days To Show</th>
         <th>Location</th>
       </tr>
@@ -37,11 +35,9 @@
         <td>{{ad.messageName}}</td>
         <td>{{ad.messageID}}</td>
         <td>{{ad.messageText}}</td>
-        <td><img src={{ad.messagePics}} width="40px" height="35px"></td>
+        <td><img src={{ad.messagePics}} width="60px" height="32px"></td>
         <td>{{ad.messageTemplatePath}}</td>
-        <!--<td>{{ad.messageNumOfSeconds}}</td>-->
         <td>{{ad.startDateWithTime}}</td>
-        <!--<td>{{ad.endDateWithTime}}</td>-->
         <td>{{ad.numOfdaysToShow}}</td>
         <td>{{ad.address}}</td>
         <td>
@@ -51,7 +47,7 @@
       </tbody>
       <tbody *ngIf="isEditing" style="width: auto;">
       <tr>
-        <td colspan="10" style="width: auto">
+        <td colspan="8" style="width: auto">
           <form class="form" #form="ngForm" (ngSubmit)="editAd(ad)" style="display:block; width: auto">
             <div class="form-group">
               <input class="form-control" type="text" name="messageName" [(ngModel)]="ad.messageName" placeholder="messageName" maxlength="15" required>
@@ -81,10 +77,10 @@
                   </th>
                   <th>
                     <select style="padding-left: 0px" name="messagePics" [(ngModel)]="ad.messagePics" placeholder="messagePics" required>
-                      <option value="http://i64.tinypic.com/2jbuwx2.png">pic 1</option>
-                      <option value="http://i67.tinypic.com/2uhlks0.jpg">pic 2</option>
-                      <option value="http://i65.tinypic.com/e6t5xz.png">pic 3</option>
-                      <option value="http://i66.tinypic.com/2jfdq1i.jpg">pic 4</option>
+                      <option value="http://i64.tinypic.com/2jbuwx2.png">MongoDB</option>
+                      <option value="http://i67.tinypic.com/2uhlks0.jpg">TypeScript</option>
+                      <option value="http://i65.tinypic.com/e6t5xz.png">NodeJS</option>
+                      <option value="http://i66.tinypic.com/2jfdq1i.jpg">MeanStack</option>
                     </select>
                   </th>
                 </tr>
@@ -101,25 +97,19 @@
               </select>
             </div>
 
-
-            <!--<div class="form-group">-->
-              <!--<input class="form-control" type="number" name="messageNumOfSeconds" [(ngModel)]="ad.messageNumOfSeconds" placeholder="messageNumOfSeconds"  min="0"  max="999999" required>-->
-            <!--</div>-->
             <div class="form-group">
-              <input class="form-control" type="datetime" name="startDateWithTime" [(ngModel)]="ad.startDateWithTime" placeholder="startDateWithTime" required>
+              <input class="form-control" type="date" name="startDateWithTime" [(ngModel)]="ad.startDateWithTime" placeholder="startDateWithTime" required>
             </div>
-            <!--<div class="form-group">-->
-              <!--<input class="form-control" type="datetime" name="endDateWithTime" [(ngModel)]="ad.endDateWithTime" placeholder="endDateWithTime" required>-->
-            <!--</div>-->
+
             Days:
             <div class="form-group form-control">
-              <select name="numOfdaysToShow" [(ngModel)]="ad.numOfdaysToShow" placeholder="numOfdaysToShow">
+              <select name="numOfdaysToShow" size="7" [(ngModel)]="ad.numOfdaysToShow" placeholder="numOfdaysToShow" name="numOfdaysToShow">
                 <option value="Sunday">Sunday</option>
                 <option value="Monday">Monday</option>
                 <option value="Tuesday">Tuesday</option>
                 <option value="Wednesday">Wednesday</option>
                 <option value="Thursday">Thursday</option>
-                <option value="Friday">Friday</option>
+                <option value="Thursday">Thursday</option>
                 <option value="Saturday">Saturday</option>
               </select>
             </div>
@@ -145,22 +135,25 @@
     <form class="form" [formGroup]="addAdForm" (ngSubmit)="addAd()" style="text-align:center">
 
       <!--Add message Name-->
+      Message Name:
       <div class="form-group">
         <input class="form-control" type="text" name="messageName" formControlName="messageName" maxlength="15" placeholder="Name">
       </div>
 
       <!--Add MessageID-->
+      Message Number:
       <div class="form-group">
-        <input class="form-control" type="number" name="messageID" formControlName="messageID" placeholder="ID" min="0" max="99999" maxlength="5">
+        <input class="form-control" type="number" name="messageID" formControlName="messageID" placeholder="Number" min="0" max="99999" maxlength="5">
       </div>
 
       <!--Add message Text-->
+      Message Content:
       <div class="form-text">
         <input class="form-control" type="text" name="messageText" formControlName="messageText" maxlength="20" placeholder="Text">
       </div>
 
       <!--Add Pics-->
-      Pics:
+      Message Pic:
       <div class="form-group">
         <table class="table table-sm" name="pics">
           <thead id="pics">
@@ -179,10 +172,10 @@
             </th>
              <th>
             <select style="padding-left: 0px" size="4" name="messagePics" formControlName="messagePics">
-              <option value="http://i64.tinypic.com/2jbuwx2.png">pic 1</option>
-              <option value="http://i67.tinypic.com/2uhlks0.jpg">pic 2</option>
-              <option value="http://i65.tinypic.com/e6t5xz.png">pic 3</option>
-              <option value="http://i66.tinypic.com/2jfdq1i.jpg">pic 4</option>
+              <option value="http://i64.tinypic.com/2jbuwx2.png">MongoDB</option>
+              <option value="http://i67.tinypic.com/2uhlks0.jpg">TypeScript</option>
+              <option value="http://i65.tinypic.com/e6t5xz.png">NodeJS</option>
+              <option value="http://i66.tinypic.com/2jfdq1i.jpg">MeanStack</option>
             </select>
             </th>
           </tr>
@@ -191,13 +184,13 @@
       </div>
 
       <!--Add Start Date & Time-->
-      Start Date and Time:
+      Message Date and Time:
       <div class="form-group">
-        <input class="form-control" type="datetime-local" value="2016-08-19 13:45:00" id="startDateWithTime" name="startDateWithTime" formControlName="startDateWithTime" >
+        <input class="form-control" type="date" id="startDateWithTime" name="startDateWithTime" formControlName="startDateWithTime" >
       </div>
 
       <!--Add Template Path-->
-      Template:
+      Message Template:
       <div class="form-group">
         <select class="form-control" id="messageTemplatePath" name="messageTemplatePath" formControlName="messageTemplatePath" >
           <option value="A">Template One</option>
@@ -207,23 +200,10 @@
       </div>
 
 
-      <!--&lt;!&ndash;Add number of Seconds&ndash;&gt;-->
-      <!--<div class="form-group">-->
-        <!--<input class="form-control" type="number" name="messageNumOfSeconds" formControlName="messageNumOfSeconds" placeholder="Ad Seconds" min="0" max="9999">-->
-      <!--</div>-->
-
-
-
-      <!--&lt;!&ndash;Add End Date & Time&ndash;&gt;-->
-      <!--End Date and Time:-->
-      <!--<div class="form-group">-->
-        <!--<input class="form-control" type="datetime-local" value="2017-08-19 13:45:00" id="endDateWithTime" name="endDateWithTime" formControlName="endDateWithTime">-->
-      <!--</div>-->
-
       <!--Add Days-->
-      Days:
+      Message Days:
       <div class="form-group">
-        <select  multiple name="numOfdaysToShow" size="7" formControlName="numOfdaysToShow">
+        <select name="numOfdaysToShow" size="7" formControlName="numOfdaysToShow">
           <option value="Sunday">Sunday</option>
           <option value="Monday">Monday</option>
           <option value="Tuesday">Tuesday</option>
@@ -235,7 +215,7 @@
       </div>
 
       <!--Address-->
-      Address:
+      Message Address:
       <div class="form-text">
         <input class="form-control" type="text" name="address" formControlName="address" placeholder="address" #search>
       </div>

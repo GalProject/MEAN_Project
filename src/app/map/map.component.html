@@ -3,16 +3,15 @@
 <!-- this creates a google map on the page with the given latitude/longitude from -->
 <!-- the component as the initial center of the map: -->
 
-
-<div class="card">
-  <h4 class="card-header"><div class="fa fa-search"> Search for your Location</div></h4>
-  <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search>
-</div>
-
 <div id="map">
 
 </div>
 
+
+<div class="card">
+  <h4 class="card-header"><div class="fa fa-search"></div> Search for your Location</h4>
+  <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search>
+</div>
 
 <div class="card" *ngIf="isLoading">
   <h4 class="card-header">Loading...</h4>
@@ -21,7 +20,7 @@
   </div>
 </div>
 <div class="card" *ngIf="!isLoading">
-  <h4 class="card-header">Current Ads On Map ({{ads.length}})</h4>
+  <h4 class="card-header"><div class="fa fa-map-marker"></div> Current Ads On Map ({{ads.length}})</h4>
   <div class="card-block">
     <table class="table table-bordered table-striped" >
       <thead class="thead-default" style="width: auto">

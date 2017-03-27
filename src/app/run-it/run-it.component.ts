@@ -12,6 +12,7 @@ import {ToastComponent} from "../shared/toast/toast.component";
 export class RunItComponent implements OnInit {
 
   ads = [];
+  tempAds = [];
   isLoading = true;
 
   ad = {};
@@ -28,36 +29,30 @@ export class RunItComponent implements OnInit {
   endDateWithTime = new FormControl('', Validators.required);
   numOfdaysToShow = new FormControl('', Validators.required);
 
+  user: Object = {};
 
-  setBorderColor(ad){
-    if (ad.messageTemplatePath.toString() == "A") {
-      return {
-        borderColor: 'green'
-      };
-    }
-    if (ad.messageTemplatePath.toString() == "B"){
-      return{
-        borderColor: 'red'
-      };
-    }
-    if (ad.messageTemplatePath.toString() == "C"){
-      return{
-        borderColor: 'gold'
-      };
-    }
-  }
-
-
-
+  SearchForm: FormGroup;
+  firstName = new FormControl("", Validators.required);
 
   constructor(private http: Http,
               private dataService: DataService,
               public toast: ToastComponent,
               private formBuilder: FormBuilder) {
   }
+  public loginForm = new FormGroup({
+    email: new FormControl("email", Validators.required),
+    password: new FormControl("password", Validators.required)
+  });
+
 
   ngOnInit() {
 
+
+
+    this.SearchForm = this.formBuilder.group({
+      email: ["", Validators.required],
+      password: ["", Validators.required]
+    });
 
     this.getAds();
 
@@ -78,11 +73,19 @@ export class RunItComponent implements OnInit {
 
   getAds() {
     this.dataService.getAds().subscribe(
-      data => this.ads = data,
+      data => this.ads = this.tempAds = data,
       error => console.log(error),
       () => this.isLoading = false
     );
   }
 
+  search(text) {
+    this.tempAds = this.ads.filter(ad => {
+      console.log(ad);
+      return ad.messageName.indexOf(text) !== -1
+    });
+
+    console.log(this.tempAds);
+  }
 
 }

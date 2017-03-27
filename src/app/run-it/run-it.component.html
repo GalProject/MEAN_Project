@@ -1,4 +1,4 @@
-<h4 class="card-header">Run it!</h4>
+<!--<h4 class="card-header">Run it!</h4>-->
 <h4 class="card-header">Current Ads ({{ads.length}})</h4>
 <div class="card" *ngIf="isLoading">
   <h4 class="card-header">Loading...</h4>
@@ -9,30 +9,32 @@
 
 <app-toast [message]="toast.message"></app-toast>
 
+<!--<form class="form-inline my-2 my-lg-0" [formGroup]="addAdForm" >-->
+  <!--<input class="form-control mr-sm-2" type="text" placeholder="Search" id="search" formControlName="search">-->
+  <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="search()">Search</button>-->
+<!--</form>-->
+
+<!--<form [formGroup]="SearchForm" >-->
+  <!--<input #name formControlName="email" type="text" placeholder="Your email">-->
+  <!--<input formControlName="password" type="password" placeholder="Your password">-->
+  <!--<button type="submit" (click)="search(name.value)">Log in</button>-->
+<!--</form>-->
+
+<div class="card-group">
+  <h4 class="card-header"><div class="fa fa-search"></div> Search for your Message Here: </h4>
+  <input #name type="text" placeholder="Message Name">
+  <button type="submit" (click)="search(name.value)">Serach!</button>
+</div>
+
+
 <div class="card">
-
-
   <div class="general-desc-wrap">
     <div class="card" *ngIf="!isLoading">
       <div class="card-block">
         <tbody *ngIf="ads.length === 0">
         <p>There are no ads in the DB<p>
         </tbody>
-
-        <div class="item-wrap">
-          <div *ngFor="let ad of ads" class="item" [ngStyle]="setBorderColor(ad)">
-            <h2>{{ad.messageName}}</h2>
-            <img src="{{ad.messagePics}}" width="160px" height="120px" style="margin-bottom: 20px"/>
-            <h5>Text:</h5>
-              {{ad.messageText}}
-            <h5>Location:</h5>
-            {{ad.address}}
-            <h5>Template:</h5>
-            {{ad.messageTemplatePath}}
-            <h5>Date:</h5>
-            {{ad.startDateWithTime}}
-          </div>
-        </div>
+          <app-ad *ngFor="let ad of tempAds" [item]="ad"></app-ad>
       </div>
     </div>
   </div>

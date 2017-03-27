@@ -14,6 +14,7 @@ import { RunItComponent } from './run-it/run-it.component';
 import { StaticsComponent } from './statics/statics.component';
 import { MapComponent } from './map/map.component';
 import {AgmCoreModule} from "angular2-google-maps/core";
+import { AdComponent } from './run-it/ad/ad.component';
 
 
 
@@ -35,7 +36,8 @@ const routing = RouterModule.forRoot([
     ToastComponent,
     RunItComponent,
     StaticsComponent,
-    MapComponent
+    MapComponent,
+    AdComponent
   ],
   imports: [
     BrowserModule,

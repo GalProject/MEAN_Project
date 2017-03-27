@@ -102,6 +102,7 @@ export class MapComponent implements OnInit{
     if (geocoder) {
       for (let ad of ads) {
         geocoder.geocode({'address': ad.address}, function (results, status) {
+          console.log(ad.address);
           map.setCenter(results[0].geometry.location);
 
           var mark = new google.maps.Marker({

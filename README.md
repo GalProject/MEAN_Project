@@ -1,7 +1,7 @@
 # Mean_Project
 Final Project using MEAN (MongoDB,Express,Angular2,Node.js)
 
-to launch (scripts):
+# to launch (scripts):
 
 npm i (for initialize only)
 

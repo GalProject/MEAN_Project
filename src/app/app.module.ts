@@ -46,7 +46,7 @@ const routing = RouterModule.forRoot([
     HttpModule,
     routing,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCsTvvvYppcaHK8ms3oZzqv9M3eP8sAl-s'
+      apiKey: 'secrect-s'
     })
   ],
   providers: [
